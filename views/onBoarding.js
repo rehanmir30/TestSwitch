@@ -1,18 +1,21 @@
 import React from 'react';
 import { View, Text, Image, StyleSheet, TouchableOpacity, Linking } from 'react-native';
+import LinearGradient from 'react-native-linear-gradient';
+
 
 export default function OnboardingScreen({ navigation }) {
   return (
     <View style={styles.container}>
       {/* Faded Title above image */}
-      <Text style={styles.fadedTitle}>TestSwitch</Text>
+      <View style={styles.coloredBackground}>
+  <Text style={styles.fadedTitle}>TestSwitch</Text>
 
-      {/* Image */}
-      <Image
-        source={require('../assets/onBoarding.png')}
-        style={styles.image}
-        resizeMode="contain"
-      />
+  <Image
+    source={require('../assets/onBoarding.png')}
+    style={styles.image}
+    resizeMode="contain"
+  />
+</View>
 
       {/* Title and Subtext */}
       <Text style={styles.title}>TestSwitch</Text>
@@ -45,31 +48,42 @@ export default function OnboardingScreen({ navigation }) {
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: '#fff', padding: 20 },
+  container: { flex: 1, backgroundColor: '#fff',  },
   
+  coloredBackground: {
+    backgroundColor: '#DDE8FF',
+    // padding: 20,
+    // borderRadius: 12, // optional, for rounded corners
+    alignItems: 'center', // centers the content horizontally
+    justifyContent: 'center',
+    marginBottom: 20, // space below the section
+  },
+
   fadedTitle: {
-    fontSize: 40,
+    backgroundColor:'#DDE8FF',
+    fontSize: 61,
     textAlign: 'center',
-    color: '#A0AEC0',
-    opacity: 0.2,
+    color: '#407BFF',
+    opacity: 0.24,
     marginTop: 20,
   },
   
   image: {
+    backgroundColor:'#DDE8FF',
     width: '100%',
     height: 280,
-    marginTop: 10,
+    
   },
 
   title: {
-    fontSize: 24,
+    fontSize: 40,
     fontWeight: 'bold',
     textAlign: 'center',
     marginTop: 15,
   },
 
   subtitle: {
-    fontSize: 16,
+    fontSize: 18,
     textAlign: 'center',
     marginBottom: 25,
     color: '#000',
@@ -81,9 +95,10 @@ const styles = StyleSheet.create({
   },
 
   infoText: {
-    fontSize: 15,
+    fontSize: 19,
     textAlign: 'center',
     lineHeight: 22,
+    marginHorizontal:40,
   },
 
   icon: {
@@ -92,7 +107,7 @@ const styles = StyleSheet.create({
 
   linkText: {
     marginTop: 15,
-    fontSize: 15,
+    fontSize: 19,
     textAlign: 'center',
   },
 
@@ -109,6 +124,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginTop: 'auto',
     marginBottom: 20,
+    marginHorizontal:20
   },
 
   buttonText: {

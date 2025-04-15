@@ -107,20 +107,22 @@ const styles = StyleSheet.create({
   verifyingText: {
     fontSize: 24,
     fontWeight: 'bold',
-    color: '#2D7DF6', // Blue color
+    color: '#016BEC', // Blue color
     marginBottom: 20,
   },
   messageText: {
-    fontSize: 18,
+    fontSize: 20,
     textAlign: 'center',
     marginBottom: 10,
+    fontWeight:900,
     color: '#000',
     lineHeight: 26,
   },
   timeText: {
-    fontSize: 18,
+    fontSize: 20,
     textAlign: 'center',
     color: '#000',
+    fontWeight:900,
     marginBottom: 60,
     lineHeight: 26,
   },

@@ -15,37 +15,43 @@ export default function HelpView({ navigation, activeScreen = 'Home' }) {
       id: 'Tips',
       title: 'Tips',
       icon: require('../assets/tips.png'),
-      backgroundColor: '#E4F9F5',
+      backgroundColor: '#e9fffe',
+      borderColor:"#00aca6"
     },
     {
       id: 'Support',
       title: 'Support',
       icon: require('../assets/support.png'),
-      backgroundColor: '#E6EFFE',
+      backgroundColor: '#f6f9ff',
+      borderColor:"#016bec"
     },
     {
       id: 'FAQs',
       title: "FAQ's",
       icon: require('../assets/faqs.png'),
-      backgroundColor: '#FFF8E1',
+      backgroundColor: '#fffcee',
+      borderColor:"#c7ae34"
     },
     {
       id: 'Feedback',
       title: 'Feedback',
       icon: require('../assets/feedback.png'),
-      backgroundColor: '#FFEBEE',
+      backgroundColor: '#FFF6F4',
+      borderColor:"#e1715b"
     },
     {
       id: 'Terms',
       title: 'Terms and Conditions',
       icon: require('../assets/terms.png'),
-      backgroundColor: '#E8F5E9',
+      backgroundColor: '#f1fff5',
+      borderColor:"#34c759"
     },
     {
       id: 'Privacy',
       title: 'Privacy Policy',
       icon: require('../assets/privacy.png'),
-      backgroundColor: '#F3E5F5',
+      backgroundColor: '#fef0ff',
+      borderColor:"#f04dff"
     },
   ];
 
@@ -87,7 +93,7 @@ export default function HelpView({ navigation, activeScreen = 'Home' }) {
         {helpItems.map((item) => (
           <TouchableOpacity
             key={item.id}
-            style={[styles.helpItem, { backgroundColor: item.backgroundColor }]}
+            style={[styles.helpItem, { backgroundColor: item.backgroundColor ,borderColor:item.borderColor}]}
             onPress={() => handleItemPress(item.id)}
           >
             <View style={styles.itemLeftSection}>
@@ -147,8 +153,8 @@ const styles = StyleSheet.create({
     height: 30,
   },
   logoText: {
-    fontSize: 20,
-    fontWeight: 'bold',
+    fontSize: 24,
+    // fontWeight: 'bold',
     marginLeft: 5,
   },
   notificationIcon: {
@@ -160,16 +166,16 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   notificationImage: {
-    width: 24,
-    height: 24,
+    width: 30,
+    height: 30,
   },
   scrollContentContainer: {
     paddingHorizontal: 20,
     paddingBottom: 40,
   },
   title: {
-    fontSize: 30,
-    fontWeight: 'bold',
+    fontSize: 24,
+    fontWeight: '400',
     marginBottom: 20,
   },
   helpItem: {
@@ -206,37 +212,39 @@ const styles = StyleSheet.create({
   },
   disclaimerTitle: {
     fontSize: 24,
-    fontWeight: 'bold',
+    // fontWeight: 'bold',
     marginBottom: 10,
   },
   disclaimerText: {
     fontSize: 14,
-    color: '#666',
+    color: '#676767',
+    fontWeight:700,
     textAlign: 'center',
     marginBottom: 10,
     paddingHorizontal: 20,
   },
   copyrightText: {
-    fontSize: 14,
-    fontWeight: '500',
-    color: '#333',
+    fontSize: 16,
+    fontWeight: '400',
+    color: '#000',
   },
   companyNumber: {
-    fontSize: 14,
-    color: '#666',
+    fontSize: 12,
+    color: '#676767',
+    fontWeight: '700',
     marginBottom: 20,
   },
   removeAccountButton: {
-    backgroundColor: '#FFEBEE',
-    paddingHorizontal: 20,
-    paddingVertical: 12,
-    borderRadius: 20,
+    backgroundColor: '#ffdada',
+    paddingHorizontal: 10,
+    paddingVertical: 8,
+    borderRadius: 5,
     borderWidth: 1,
-    borderColor: '#FFCDD2',
+    borderColor: '#fb504e',
     marginBottom:30,
   },
   removeAccountText: {
-    color: '#F44336',
+    color: '#fd504e',
     fontWeight: '500',
     fontSize: 16,
   },

@@ -134,27 +134,28 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
   },
   inputLabel: {
-    fontSize: 20,
+    fontSize: 24,
     fontWeight: 'bold',
     marginBottom: 5,
   },
   inputSubtitle: {
-    fontSize: 16,
-    color: '#666',
+    fontSize: 18,
+    color: '#4d4d4d',
     marginBottom: 15,
+    fontWeight:700,
   },
   textInput: {
     height: 50,
     borderWidth: 1,
-    borderColor: '#ddd',
+    borderColor: '#c9c9c9',
     borderRadius: 8,
     paddingHorizontal: 10,
     fontSize: 16,
     backgroundColor: 'white',
   },
   inputExample: {
-    fontSize: 14,
-    color: '#999',
+    fontSize: 16,
+    color: '#aaaaaa',
     marginTop: 5,
   },
   separator: {
@@ -165,7 +166,7 @@ const styles = StyleSheet.create({
   },
   saveButton: {
     backgroundColor: '#3b82f6',
-    borderRadius: 5,
+    borderRadius: 8,
     padding: 15,
     alignItems: 'center',
     marginHorizontal: 20,

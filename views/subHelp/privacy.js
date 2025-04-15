@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, ScrollView, StatusBar, Image } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, ScrollView, StatusBar, Image ,ImageBackground} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 // Sample terms and conditions text
@@ -14,8 +14,12 @@ const termsText = [
 
 export default function Privacy({ navigation }) {
   return (
+<ImageBackground
+                source={require('../../assets/gradientBg.png')}
+                style={styles.background}
+                resizeMode="cover"
+              >
     <View style={styles.container}>
-      
       
       {/* Header */}
       <View style={styles.header}>
@@ -48,13 +52,19 @@ export default function Privacy({ navigation }) {
         </View>
       </ScrollView>
     </View>
+    </ImageBackground>
   );
 }
 
 const styles = StyleSheet.create({
+  background: {
+    flex: 1,
+    // justifyContent: 'center',
+    // alignItems: 'center',
+  },
   container: {
     flex: 1,
-    backgroundColor: '#f5f7fa',
+    // backgroundColor: '#f5f7fa',
   },
   header: {
     flexDirection: 'row',
@@ -97,8 +107,7 @@ const styles = StyleSheet.create({
     paddingTop: 5,
   },
   title: {
-    fontSize: 22,
-    fontWeight: 'bold',
+    fontSize: 24,
     marginBottom: 15,
     color: '#000',
   },
@@ -106,9 +115,10 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   paragraph: {
-    fontSize: 14,
+    fontSize: 16,
+    fontWeight: 'bold',
     lineHeight: 20,
-    color: '#555',
+    color: '#676767',
     marginBottom: 15,
   },
 });

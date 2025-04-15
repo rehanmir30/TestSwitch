@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, Linking, SafeAreaView } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, Linking, SafeAreaView ,ImageBackground} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 export default function Support({ navigation }) {
@@ -10,6 +10,13 @@ export default function Support({ navigation }) {
   };
 
   return (
+
+     <ImageBackground
+                source={require('../../assets/gradientBg.png')}
+                style={styles.background}
+                resizeMode="cover"
+              >
+
     <SafeAreaView style={styles.container}>
       <View style={styles.header}>
         <TouchableOpacity onPress={() => navigation.goBack()}>
@@ -33,13 +40,19 @@ export default function Support({ navigation }) {
         </TouchableOpacity>
       </View>
     </SafeAreaView>
+    </ImageBackground>
   );
 }
 
 const styles = StyleSheet.create({
+  background: {
+    flex: 1,
+    // justifyContent: 'center',
+    // alignItems: 'center',
+  },
   container: {
     flex: 1,
-    backgroundColor: '#f5f7fa',
+    // backgroundColor: '#f5f7fa',
   },
   header: {
     flexDirection: 'row',
@@ -48,6 +61,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     paddingTop: 20,
     paddingBottom: 10,
+    marginTop:20,
   },
   backButton: {
     padding: 5,
@@ -79,24 +93,28 @@ const styles = StyleSheet.create({
     paddingTop: 20,
   },
   title: {
-    fontSize: 28,
-    fontWeight: 'bold',
+    fontSize: 24,
+    // fontWeight: 'bold',
     marginBottom: 10,
   },
   description: {
-    fontSize: 16,
-    color: '#666',
+    fontSize: 18,
+    fontWeight: 'bold',
+    color: '#4d4d4d',
     lineHeight: 22,
     marginBottom: 20,
   },
   emailButton: {
-    backgroundColor: '#e6f0ff',
+    backgroundColor: '#d7e9ff',
     padding: 15,
     borderRadius: 8,
+    borderColor:"#96b7ff",
     alignItems: 'center',
+    marginTop:40,
   },
   emailButtonText: {
-    fontSize: 16,
-    color: '#333',
+    fontSize: 22,
+    fontWeight: 'bold',
+    color: '#000',
   },
 });

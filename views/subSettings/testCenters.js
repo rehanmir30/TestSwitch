@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image ,ImageBackground} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 
@@ -13,6 +13,11 @@ export default function TestCenters({ navigation }) {
   };
 
   return (
+    <ImageBackground
+                source={require('../../assets/gradientBg.png')}
+                style={styles.background}
+                resizeMode="cover"
+              >
     <View style={styles.container}>
       {/* Header */}
       <View style={styles.header}>
@@ -37,6 +42,7 @@ export default function TestCenters({ navigation }) {
           <Image source={require('../../assets/location-icon.png')} style={styles.inputIcon} />
           <TextInput
             placeholder="Search for centre"
+            placeholderTextColor="#878787"
             style={styles.input}
             value={centre1}
             onChangeText={setCentre1}
@@ -82,13 +88,19 @@ export default function TestCenters({ navigation }) {
         <Text style={styles.saveButtonText}>SAVE</Text>
       </TouchableOpacity>
     </View>
+    </ImageBackground>
   );
 }
 
 const styles = StyleSheet.create({
+  background: {
+    flex: 1,
+    // justifyContent: 'center',
+    // alignItems: 'center',
+  },
   container: {
     flex: 1,
-    backgroundColor: '#FFFFFF',
+    // backgroundColor: '#FFFFFF',
     padding: 20,
     justifyContent: 'flex-start',
   },
@@ -103,19 +115,20 @@ const styles = StyleSheet.create({
     color: '#000',
   },
   bellIcon: {
-    width: 24,
-    height: 24,
+    width: 30,
+    height: 30,
     resizeMode: 'contain',
   },
   title: {
-    fontSize: 20,
-    fontWeight: '700',
+    fontSize: 24,
+    // fontWeight: '400',
     marginTop: 20,
     color: '#000',
   },
   subtitle: {
-    fontSize: 14,
-    color: '#444',
+    fontSize: 18,
+    color: '#4d4d4d',
+    fontWeight: '700',
     marginVertical: 10,
   },
   inputWrapper: {
@@ -125,7 +138,7 @@ const styles = StyleSheet.create({
   inputInner: {
     flexDirection: 'row',
     alignItems: 'center',
-    borderColor: '#D9D9D9',
+    borderColor: '#dbdbdb',
     borderWidth: 1,
     borderRadius: 12,
     backgroundColor: '#F9F9F9',
@@ -134,7 +147,8 @@ const styles = StyleSheet.create({
   },
   input: {
     flex: 1,
-    fontSize: 16,
+    fontSize: 18,
+    fontWeight:"700"
   },
   inputIcon: {
     width: 18,

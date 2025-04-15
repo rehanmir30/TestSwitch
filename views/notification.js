@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, ScrollView, StatusBar, Image } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, ScrollView, StatusBar, Image ,ImageBackground} from 'react-native';
 
 // Sample notification data
 const notifications = [
@@ -15,6 +15,11 @@ const notifications = [
 
 export default function NotificationsScreen({ navigation }) {
   return (
+    <ImageBackground
+                    source={require('../assets/gradientBg.png')}
+                    style={styles.background}
+                    resizeMode="cover"
+                  >
     <View style={styles.container}>
       
       {/* Header */}
@@ -57,13 +62,19 @@ export default function NotificationsScreen({ navigation }) {
         <View style={styles.bottomIndicator} />
       </View>
     </View>
+    </ImageBackground>
   );
 }
 
 const styles = StyleSheet.create({
+  background: {
+    flex: 1,
+    // justifyContent: 'center',
+    // alignItems: 'center',
+  },
   container: {
     flex: 1,
-    backgroundColor: '#f0f4f8',
+    // backgroundColor: '#f0f4f8',
   },
   header: {
     flexDirection: 'row',
@@ -75,14 +86,15 @@ const styles = StyleSheet.create({
   },
   headerTitle: {
     fontSize: 24,
-    fontWeight: 'bold',
-    color: '#333',
+    fontWeight: '400',
+    color: '#000',
   },
   closeButton: {
     width: 36,
     height: 36,
     borderRadius: 18,
-    backgroundColor: '#f1f1f1',
+    borderColor: '#dbdbdb',
+    borderWidth:1,
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -96,14 +108,14 @@ const styles = StyleSheet.create({
   },
   notificationItem: {
     flexDirection: 'row',
-    backgroundColor: 'white',
+    backgroundColor: '#f5f5f5',
     borderRadius: 12,
     padding: 15,
     marginBottom: 10,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 1 },
-    shadowOpacity: 0.05,
-    shadowRadius: 2,
+    // shadowColor: '#000',
+    // shadowOffset: { width: 0, height: 1 },
+    // shadowOpacity: 0.05,
+    // shadowRadius: 2,
     elevation: 1,
   },
   iconContainer: {
@@ -129,16 +141,16 @@ const styles = StyleSheet.create({
   },
   notificationTitle: {
     fontSize: 16,
-    fontWeight: '600',
-    color: '#333',
+    fontWeight: '700',
+    color: '#000',
   },
   notificationTime: {
     fontSize: 14,
-    color: '#888',
+    color: '#8d8d8d',
   },
   notificationMessage: {
-    fontSize: 14,
-    color: '#555',
+    fontSize: 16,
+    color: '#000',
     lineHeight: 20,
   },
   emptyState: {

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, SafeAreaView, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, SafeAreaView, TouchableOpacity ,ImageBackground} from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 
 // Custom switch component to match the design in the image
@@ -42,6 +42,11 @@ export default function Alerts({ navigation }) {
   };
 
   return (
+    <ImageBackground
+                source={require('../../assets/gradientBg.png')}
+                style={styles.background}
+                resizeMode="cover"
+              >
     <SafeAreaView style={styles.container}>
       <View style={styles.header}>
         <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backButton}>
@@ -103,13 +108,19 @@ export default function Alerts({ navigation }) {
 
       <View style={styles.homeIndicator} />
     </SafeAreaView>
+    </ImageBackground>
   );
 }
 
 const styles = StyleSheet.create({
+  background: {
+    flex: 1,
+    // justifyContent: 'center',
+    // alignItems: 'center',
+  },
   container: {
     flex: 1,
-    backgroundColor: '#F2F7FD',
+    // backgroundColor: '#F2F7FD',
   },
   header: {
     flexDirection: 'row',
@@ -139,18 +150,18 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
   },
   title: {
-    fontSize: 28,
-    fontWeight: 'bold',
+    fontSize: 24,
     marginBottom: 8,
     color: '#000',
   },
   subtitle: {
-    fontSize: 16,
-    color: '#666',
+    fontSize: 18,
+    color: '#4d4d4d',
+    fontWeight:"700",
     marginBottom: 30,
   },
   settingsContainer: {
-    backgroundColor: 'white',
+    // backgroundColor: 'white',
     borderRadius: 12,
     overflow: 'hidden',
   },
@@ -162,12 +173,13 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
   },
   settingText: {
-    fontSize: 16,
+    fontSize: 20,
     color: '#000',
+    fontWeight:700
   },
   divider: {
     height: 1,
-    backgroundColor: '#f0f0f0',
+    backgroundColor: '#e2evff',
     marginLeft: 16,
   },
   // Custom switch styles to match the design in the image

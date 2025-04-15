@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, ScrollView, Image } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, ScrollView, Image ,ImageBackground} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 // Sample data for the driving tips
@@ -75,6 +75,13 @@ export default function Tips({ navigation }) {
   };
 
   return (
+
+    <ImageBackground
+                source={require('../../assets/gradientBg.png')}
+                style={styles.background}
+                resizeMode="cover"
+              >
+
     <View style={styles.container}>
       <View style={styles.header}>
         <TouchableOpacity onPress={() => navigation.goBack()}>
@@ -98,13 +105,19 @@ export default function Tips({ navigation }) {
         ))}
       </ScrollView>
     </View>
+    </ImageBackground>
   );
 }
 
 const styles = StyleSheet.create({
+  background: {
+    flex: 1,
+    // justifyContent: 'center',
+    // alignItems: 'center',
+  },
   container: {
     flex: 1,
-    backgroundColor: '#f5f7fa',
+    // backgroundColor: '#f5f7fa',
   },
   header: {
     padding: 20,
@@ -119,25 +132,26 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
   mainTitle: {
-    fontSize: 28,
-    fontWeight: 'bold',
+    fontSize: 24,
+    fontWeight: '400',
     marginBottom: 5,
   },
   subtitle: {
     fontSize: 16,
-    color: '#666',
+    color: '#676767',
+    fontWeight: '700',
     marginBottom: 10,
   },
   tilesContainer: {
     padding: 10,
   },
   tileContainer: {
-    backgroundColor: '#fff',
+    // backgroundColor: '#fff',
     borderRadius: 10,
     marginBottom: 10,
     overflow: 'hidden',
     borderWidth: 1,
-    borderColor: '#e1e4e8',
+    borderColor: '#dbdbdb',
   },
   tileHeader: {
     flexDirection: 'row',
@@ -146,24 +160,25 @@ const styles = StyleSheet.create({
     padding: 15,
   },
   tileTitle: {
-    fontSize: 16,
-    fontWeight: '600',
+    fontSize: 20,
+    fontWeight: '700',
     flex: 1,
   },
   chevronIcon: {
-    width: 20,
-    height: 20,
+    width: 24,
+    height: 24,
   },
   tileContent: {
     padding: 15,
     paddingTop: 0,
-    backgroundColor: '#f8f9fa',
+    // backgroundColor: '#f8f9fa',
     borderTopWidth: 1,
     borderTopColor: '#eee',
   },
   contentText: {
-    fontSize: 14,
+    fontSize: 16,
     lineHeight: 20,
-    color: '#444',
+    fontWeight: '700',
+    color: '#676767',
   },
 });

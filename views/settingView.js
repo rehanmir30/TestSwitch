@@ -1,10 +1,18 @@
 import React from 'react';
-import { View, Text, Image, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
+import { View, Text, Image, StyleSheet, TouchableOpacity, ScrollView ,ImageBackground} from 'react-native';
 
 export default function SettingsView({ navigation }) {
   return (
+    
+    <ImageBackground
+            source={require('../assets/gradientBg.png')}
+            style={styles.background}
+            resizeMode="cover"
+          >
+
     <ScrollView style={styles.container}>
       
+       
       {/* Header */}
       <View style={styles.header}>
         <Image source={require('../assets/logo.png')} style={styles.logo} />
@@ -19,7 +27,7 @@ export default function SettingsView({ navigation }) {
 
       {/* Menu Buttons */}
       <TouchableOpacity 
-  style={[styles.card, { backgroundColor: '#E6F0FF', borderColor: '#2D7DF6' }]}
+  style={[styles.card, { backgroundColor: '#f6f9ff', borderColor: '#016bec' }]}
   onPress={() => navigation.navigate('TestCenters')}
 >
   <View style={styles.cardContent}>
@@ -30,7 +38,7 @@ export default function SettingsView({ navigation }) {
 </TouchableOpacity>
 
 <TouchableOpacity 
-  style={[styles.card, { backgroundColor: '#FFF2F0', borderColor: '#FF8C66' }]}
+  style={[styles.card, { backgroundColor: '#FFF6F4', borderColor: '#E1715b' }]}
   onPress={() => navigation.navigate('Availability')}
 >
   <View style={styles.cardContent}>
@@ -41,7 +49,7 @@ export default function SettingsView({ navigation }) {
 </TouchableOpacity>
 
 <TouchableOpacity 
-  style={[styles.card, { backgroundColor: '#FBEFFF', borderColor: '#D67EFF' }]}
+  style={[styles.card, { backgroundColor: '#fef0ff', borderColor: '#f04dff' }]}
   onPress={() => navigation.navigate('Alerts')}
 >
   <View style={styles.cardContent}>
@@ -52,7 +60,7 @@ export default function SettingsView({ navigation }) {
 </TouchableOpacity>
 
 <TouchableOpacity 
-  style={[styles.card, { backgroundColor: '#ECFFF0', borderColor: '#44C37F' }]}
+  style={[styles.card, { backgroundColor: '#f1fff5', borderColor: '#34c759' }]}
   onPress={() => navigation.navigate('AutoSwitch')}
 >
   <View style={styles.cardContent}>
@@ -61,7 +69,7 @@ export default function SettingsView({ navigation }) {
   </View>
   <Text style={styles.arrow}>›</Text>
 </TouchableOpacity>
-
+<View style={styles.gap}></View>
 <TouchableOpacity 
   style={[styles.card, styles.logoutCard]}
   onPress={() => {
@@ -69,6 +77,7 @@ export default function SettingsView({ navigation }) {
     navigation.navigate('Login'); // or wherever you want to go after logout
   }}
 >
+  
   <View style={styles.cardContent}>
     <Image source={require('../assets/logout.png')} style={styles.cardIcon} />
     <Text style={styles.cardText}>Logout</Text>
@@ -76,15 +85,26 @@ export default function SettingsView({ navigation }) {
   <Text style={styles.arrow}>›</Text>
 </TouchableOpacity>
 
-      
     </ScrollView>
+    </ImageBackground> 
   );
 }
 
 const styles = StyleSheet.create({
+
+  gap:{
+    marginTop:150,
+  },
+
+  background: {
+    flex: 1,
+    // justifyContent: 'center',
+    // alignItems: 'center',
+  },
+
   container: {
     padding: 20,
-    backgroundColor: '#FFFFFF',
+    // backgroundColor: '#FFFFFF',
     flex: 1,
   },
   header: {
@@ -99,9 +119,10 @@ const styles = StyleSheet.create({
     resizeMode: 'contain',
   },
   headerTitle: {
-    fontSize: 18,
-    fontWeight: '600',
+    fontSize: 24,
+    fontWeight: 400,
     color: '#000',
+    marginLeft:4
   },
   profileIcon: {
     width: 24,
@@ -109,8 +130,8 @@ const styles = StyleSheet.create({
     resizeMode: 'contain',
   },
   sectionTitle: {
-    fontSize: 20,
-    fontWeight: '700',
+    fontSize: 24,
+    fontWeight: '400',
     marginBottom: 15,
     color: '#000',
   },
@@ -134,11 +155,11 @@ const styles = StyleSheet.create({
     resizeMode: 'contain',
   },
   cardText: {
-    fontSize: 16,
-    fontWeight: '500',
+    fontSize: 22,
+    fontWeight: '700',
   },
   arrow: {
-    fontSize: 20,
-    color: '#888',
+    fontSize: 24,
+    color: '#afafaf',
   },
 });

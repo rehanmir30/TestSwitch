@@ -1,9 +1,16 @@
 import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, Image,ImageBackground } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 export default function Availability({ navigation }) {
   return (
+
+    <ImageBackground
+                source={require('../../assets/gradientBg.png')}
+                style={styles.background}
+                resizeMode="cover"
+              >
+
     <View style={styles.container}>
       {/* Header */}
       <View style={styles.header}>
@@ -23,7 +30,7 @@ export default function Availability({ navigation }) {
 
       {/* Availability Button */}
       <TouchableOpacity
-        style={[styles.card, { borderColor: '#8BB1FF' }]}
+        style={[styles.card, { borderColor: '#96b7ff' }]}
         onPress={() => navigation.navigate('AvailabilityDetails')}>
         <View style={styles.cardContent}>
           <Image source={require('../../assets/availability-icon.png')} style={styles.cardIcon} />
@@ -34,7 +41,7 @@ export default function Availability({ navigation }) {
 
       {/* Specific Unavailability Button */}
       <TouchableOpacity
-        style={[styles.card, { borderColor: '#FF8C66' }]}
+        style={[styles.card, { borderColor: '#e1715b' }]}
         onPress={() => navigation.navigate('SpecificUnavailability')}>
         <View style={styles.cardContent}>
           <Image source={require('../../assets/unavailability-icon.png')} style={styles.cardIcon} />
@@ -43,13 +50,19 @@ export default function Availability({ navigation }) {
         <Icon name="chevron-forward" size={22} color="#000" />
       </TouchableOpacity>
     </View>
+    </ImageBackground>
   );
 }
 const styles = StyleSheet.create({
+  background: {
+    flex: 1,
+    // justifyContent: 'center',
+    // alignItems: 'center',
+  },
     container: {
       flex: 1,
       padding: 20,
-      backgroundColor: '#FFFFFF',
+      // backgroundColor: '#FFFFFF',
     },
     header: {
       flexDirection: 'row',
@@ -59,20 +72,21 @@ const styles = StyleSheet.create({
       marginBottom: 25,
     },
     bellIcon: {
-      width: 26,
-      height: 26,
+      width: 30,
+      height: 30,
       resizeMode: 'contain',
     },
     title: {
-      fontSize: 22,
-      fontWeight: '700',
+      fontSize: 24,
+      fontWeight: '400',
       color: '#000',
       marginBottom: 8,
     },
     subtitle: {
-      fontSize: 14,
-      color: '#444',
+      fontSize: 18,
+      color: '#4d4d4d',
       marginBottom: 30,
+      fontWeight: '700',
     },
     card: {
       borderWidth: 1,
@@ -95,8 +109,8 @@ const styles = StyleSheet.create({
       resizeMode: 'contain',
     },
     cardText: {
-      fontSize: 16,
-      fontWeight: '600',
+      fontSize: 22,
+      fontWeight: '700',
     },
   });
   

@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, ScrollView, StatusBar } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, ScrollView, StatusBar,ImageBackground } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 // Sample FAQ data
 const faqData = [
@@ -32,8 +32,13 @@ const faqData = [
 
 export default function FAQs({ navigation }) {
   return (
+        
+        <ImageBackground
+                source={require('../../assets/gradientBg.png')}
+                style={styles.background}
+                resizeMode="cover"
+              >
     <View style={styles.container}>
-      
       
       {/* Header */}
       <View style={styles.header}>
@@ -64,13 +69,19 @@ export default function FAQs({ navigation }) {
         </View>
       </ScrollView>
     </View>
+    </ImageBackground>
   );
 }
 
 const styles = StyleSheet.create({
+  background: {
+    flex: 1,
+    // justifyContent: 'center',
+    // alignItems: 'center',
+  },
   container: {
     flex: 1,
-    backgroundColor: '#f5f7fa',
+    // backgroundColor: '#f5f7fa',
   },
   header: {
     flexDirection: 'row',
@@ -112,14 +123,15 @@ const styles = StyleSheet.create({
     paddingTop: 5,
   },
   title: {
-    fontSize: 22,
-    fontWeight: 'bold',
+    fontSize: 24,
+    // fontWeight: 'bold',
     marginBottom: 5,
     color: '#000',
   },
   subtitle: {
-    fontSize: 16,
-    color: '#555',
+    fontSize: 18,
+    fontWeight: 'bold',
+    color: '#4d4d4d',
     marginBottom: 20,
   },
   faqList: {
@@ -129,14 +141,14 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   questionText: {
-    fontSize: 18,
-    fontWeight: 'bold',
+    fontSize: 24,
     marginBottom: 5,
     color: '#000',
   },
   answerText: {
-    fontSize: 14,
+    fontSize: 16,
+    fontWeight: 'bold',
     lineHeight: 20,
-    color: '#555',
+    color: '#676767',
   },
 });

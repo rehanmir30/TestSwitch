@@ -7,6 +7,7 @@ import {
   TouchableOpacity,
   Image,
   ScrollView,
+  ImageBackground
 } from 'react-native';
 
 export default function ProfileView({ navigation, activeScreen = 'Home' }) {
@@ -27,6 +28,13 @@ export default function ProfileView({ navigation, activeScreen = 'Home' }) {
   };
 
   return (
+
+    <ImageBackground
+                source={require('../assets/gradientBg.png')}
+                style={{flex:1}}
+                resizeMode="cover"
+              >
+
     <SafeAreaView style={styles.container}>
       {/* Header - Fixed */}
       <View style={styles.header}>
@@ -147,13 +155,20 @@ export default function ProfileView({ navigation, activeScreen = 'Home' }) {
         <View style={styles.bottomPadding} />
       </ScrollView>
     </SafeAreaView>
+    </ImageBackground>
   );
 }
 
 const styles = StyleSheet.create({
+
+  background: {
+    flex: 1,
+    // justifyContent: 'center',
+    // alignItems: 'center',
+  },
   container: {
     flex: 1,
-    backgroundColor: '#FFFFFF',
+    // backgroundColor: '#FFFFFF',
   },
   header: {
     flexDirection: 'row',
@@ -173,8 +188,8 @@ const styles = StyleSheet.create({
     height: 30,
   },
   logoText: {
-    fontSize: 20,
-    fontWeight: 'bold',
+    fontSize: 24,
+    // fontWeight: 'bold',
     marginLeft: 5,
   },
   notificationIcon: {
@@ -186,22 +201,23 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   notificationImage: {
-    width: 24,
-    height: 24,
+    width: 30,
+    height: 30,
   },
   scrollContent: {
     paddingHorizontal: 20,
     paddingBottom: 30,
   },
   title: {
-    fontSize: 30,
-    fontWeight: 'bold',
+    fontSize: 24,
+    fontWeight: '400',
     marginBottom: 20,
   },
   userInfo: {
     flexDirection: 'row',
     alignItems: 'center',
     marginBottom: 20,
+    margin:"auto"
   },
   avatar: {
     width: 60,
@@ -220,31 +236,34 @@ const styles = StyleSheet.create({
     marginLeft: 12,
   },
   userName: {
-    fontSize: 20,
+    fontSize: 24,
     fontWeight: 'bold',
   },
   userEmail: {
     fontSize: 16,
-    color: '#666',
+    color: '#000',
+    fontWeight: 'bold',
   },
   infoCard: {
-    backgroundColor: '#FFFFFF',
+    // backgroundColor: '#FFFFFF',
     borderRadius: 10,
     borderWidth: 1,
-    borderColor: '#E5E5E5',
+    borderColor: '#dbdbdb',
     padding: 16,
     marginBottom: 10,
   },
   infoLabel: {
     fontSize: 14,
-    color: '#888',
+    color: '#7b7b7b',
     marginBottom: 4,
+    fontWeight: 'bold',
     textAlign: 'center',
   },
   infoValue: {
     fontSize: 18,
-    fontWeight: '600',
+    fontWeight: '700',
     textAlign: 'center',
+    color: '#000',
   },
   countdownContainer: {
     flexDirection: 'row',
@@ -261,9 +280,9 @@ const styles = StyleSheet.create({
   countdownNumber: {
     width: 30,
     height: 36,
-    backgroundColor: '#E6EFFE',
-    color: '#4285F4',
-    fontSize: 24,
+    backgroundColor: '#ebf1ff',
+    color: '#016bec',
+    fontSize: 26,
     fontWeight: 'bold',
     textAlign: 'center',
     lineHeight: 36,
@@ -272,7 +291,8 @@ const styles = StyleSheet.create({
   },
   countdownLabel: {
     fontSize: 14,
-    color: '#666',
+    fontWeight: '700',
+    color: '#000',
     marginTop: 4,
     textAlign: 'center',
   },
@@ -283,18 +303,19 @@ const styles = StyleSheet.create({
   },
   countdownDot: {
     fontSize: 20,
-    color: '#4285F4',
+    color: '#016bec',
     fontWeight: 'bold',
   },
   subscriptionContainer: {
     flexDirection: 'row',
     backgroundColor: '#ECF1FD',
     borderRadius: 16,
+    borderColor:"#016bec",
     padding: 16,
     marginTop: 20,
     justifyContent: 'space-between',
     alignItems: 'center',
-    marginBottom:40
+    marginBottom:60
   },
   subscriptionInfo: {
     flexDirection: 'row',
@@ -310,15 +331,17 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   subscriptionTitle: {
-    fontSize: 18,
-    color: '#4285F4',
-    fontWeight: 'bold',
+    fontSize: 21,
+    color: '#016bex',
+    fontWeight: '400',
   },
   subscriptionDetails: {
-    fontSize: 14,
-    color: '#333',
+    fontSize: 16,
+    color: '#000',
+    fontWeight: 'bold',
   },
   restoreButton: {
+    marginBottom:-90,
     backgroundColor: '#4285F4',
     paddingHorizontal: 16,
     paddingVertical: 8,
@@ -326,7 +349,8 @@ const styles = StyleSheet.create({
   },
   restoreButtonText: {
     color: '#FFFFFF',
-    fontWeight: 'bold',
+    fontSize:16
+    // fontWeight: 'bold',
   },
   bottomPadding: {
     height: 30,
