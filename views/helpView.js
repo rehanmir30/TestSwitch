@@ -1,5 +1,13 @@
 import React from 'react';
-import { View, Text, StyleSheet, SafeAreaView, TouchableOpacity, Image, ScrollView } from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  SafeAreaView,
+  TouchableOpacity,
+  Image,
+  ScrollView,
+} from 'react-native';
 
 export default function HelpView({ navigation, activeScreen = 'Home' }) {
   const helpItems = [
@@ -17,7 +25,7 @@ export default function HelpView({ navigation, activeScreen = 'Home' }) {
     },
     {
       id: 'FAQs',
-      title: 'FAQ\'s',
+      title: "FAQ's",
       icon: require('../assets/faqs.png'),
       backgroundColor: '#FFF8E1',
     },
@@ -42,24 +50,26 @@ export default function HelpView({ navigation, activeScreen = 'Home' }) {
   ];
 
   const handleItemPress = (id) => {
-    // Navigate to the respective screen based on the id
     navigation.navigate(id);
   };
 
   return (
     <SafeAreaView style={styles.container}>
+      {/* Header (fixed) */}
       <View style={styles.header}>
         <View style={styles.logoContainer}>
-          <Image 
+          <Image
             source={require('../assets/logo.png')}
             style={styles.logo}
             resizeMode="contain"
           />
           <Text style={styles.logoText}>TestSwitch</Text>
         </View>
-        <TouchableOpacity onPress={() => navigation.navigate("Notification")}style={styles.notificationIcon}>
-        
-          <Image 
+        <TouchableOpacity
+          onPress={() => navigation.navigate('Notification')}
+          style={styles.notificationIcon}
+        >
+          <Image
             source={require('../assets/bell.png')}
             style={styles.notificationImage}
             resizeMode="contain"
@@ -67,7 +77,11 @@ export default function HelpView({ navigation, activeScreen = 'Home' }) {
         </TouchableOpacity>
       </View>
 
-      <ScrollView style={styles.content} showsVerticalScrollIndicator={false}>
+      {/* Scrollable Content */}
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={styles.scrollContentContainer}
+      >
         <Text style={styles.title}>Help</Text>
 
         {helpItems.map((item) => (
@@ -77,7 +91,11 @@ export default function HelpView({ navigation, activeScreen = 'Home' }) {
             onPress={() => handleItemPress(item.id)}
           >
             <View style={styles.itemLeftSection}>
-              <Image source={item.icon} style={styles.itemIcon} resizeMode="contain" />
+              <Image
+                source={item.icon}
+                style={styles.itemIcon}
+                resizeMode="contain"
+              />
               <Text style={styles.itemTitle}>{item.title}</Text>
             </View>
             <Image
@@ -91,11 +109,12 @@ export default function HelpView({ navigation, activeScreen = 'Home' }) {
         <View style={styles.disclaimerSection}>
           <Text style={styles.disclaimerTitle}>Disclaimer</Text>
           <Text style={styles.disclaimerText}>
-            This Service is in no way associated or affiliated with the DVSA or any government agencies.
+            This Service is in no way associated or affiliated with the DVSA or
+            any government agencies.
           </Text>
           <Text style={styles.copyrightText}>2025@TestSwitch Ltd.</Text>
           <Text style={styles.companyNumber}>Company Number 1234455</Text>
-          
+
           <TouchableOpacity style={styles.removeAccountButton}>
             <Text style={styles.removeAccountText}>Remove Account</Text>
           </TouchableOpacity>
@@ -117,7 +136,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
     paddingTop: 10,
     paddingBottom: 5,
-    marginTop:20
+    marginTop: 20,
   },
   logoContainer: {
     flexDirection: 'row',
@@ -144,9 +163,9 @@ const styles = StyleSheet.create({
     width: 24,
     height: 24,
   },
-  content: {
-    flex: 1,
+  scrollContentContainer: {
     paddingHorizontal: 20,
+    paddingBottom: 40,
   },
   title: {
     fontSize: 30,
@@ -162,12 +181,6 @@ const styles = StyleSheet.create({
     padding: 16,
     borderWidth: 1,
     borderColor: 'rgba(0,0,0,0.06)',
-    // Remove any elevation or shadow properties
-    shadowColor: 'transparent',
-    shadowOffset: { width: 0, height: 0 },
-    shadowOpacity: 0,
-    shadowRadius: 0,
-    elevation: 0,
   },
   itemLeftSection: {
     flexDirection: 'row',
@@ -220,12 +233,7 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     borderWidth: 1,
     borderColor: '#FFCDD2',
-    // Remove any elevation or shadow properties
-    shadowColor: 'transparent',
-    shadowOffset: { width: 0, height: 0 },
-    shadowOpacity: 0,
-    shadowRadius: 0,
-    elevation: 0,
+    marginBottom:30,
   },
   removeAccountText: {
     color: '#F44336',

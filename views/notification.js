@@ -16,7 +16,6 @@ const notifications = [
 export default function NotificationsScreen({ navigation }) {
   return (
     <View style={styles.container}>
-      <StatusBar barStyle="dark-content" />
       
       {/* Header */}
       <View style={styles.header}>

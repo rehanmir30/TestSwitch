@@ -15,7 +15,7 @@ const termsText = [
 export default function Privacy({ navigation }) {
   return (
     <View style={styles.container}>
-      <StatusBar barStyle="dark-content" />
+      
       
       {/* Header */}
       <View style={styles.header}>

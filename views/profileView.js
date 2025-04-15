@@ -1,8 +1,15 @@
 import React from 'react';
-import { View, Text, StyleSheet, SafeAreaView, TouchableOpacity, Image, ScrollView } from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  SafeAreaView,
+  TouchableOpacity,
+  Image,
+  ScrollView,
+} from 'react-native';
 
 export default function ProfileView({ navigation, activeScreen = 'Home' }) {
-  // Mock user data
   const userData = {
     name: 'Johndow3',
     email: 'johndow3@gmail.com',
@@ -14,32 +21,40 @@ export default function ProfileView({ navigation, activeScreen = 'Home' }) {
     countdown: {
       days: 114,
       hours: 19,
-      minutes: 16
+      minutes: 16,
     },
-    subscription: 'Premium'
+    subscription: 'Premium',
   };
 
   return (
     <SafeAreaView style={styles.container}>
+      {/* Header - Fixed */}
       <View style={styles.header}>
         <View style={styles.logoContainer}>
-          <Image 
-            source={require('../assets/logo.png')} // Replace with your actual logo path
+          <Image
+            source={require('../assets/logo.png')}
             style={styles.logo}
             resizeMode="contain"
           />
           <Text style={styles.logoText}>TestSwitch</Text>
         </View>
-        <TouchableOpacity style={styles.notificationIcon}>
-          <Image 
-            source={require('../assets/bell.png')} // Replace with your notification icon path
+        <TouchableOpacity
+          onPress={() => navigation.navigate('Notification')}
+          style={styles.notificationIcon}
+        >
+          <Image
+            source={require('../assets/bell.png')}
             style={styles.notificationImage}
             resizeMode="contain"
           />
         </TouchableOpacity>
       </View>
 
-      <ScrollView style={styles.content} showsVerticalScrollIndicator={false}>
+      {/* Scrollable Content */}
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={styles.scrollContent}
+      >
         <Text style={styles.title}>Profile</Text>
 
         <View style={styles.userInfo}>
@@ -69,7 +84,9 @@ export default function ProfileView({ navigation, activeScreen = 'Home' }) {
 
         <View style={styles.infoCard}>
           <Text style={styles.infoLabel}>Test Date</Text>
-          <Text style={styles.infoValue}>{userData.testDate} / {userData.testTime}</Text>
+          <Text style={styles.infoValue}>
+            {userData.testDate} / {userData.testTime}
+          </Text>
         </View>
 
         <View style={styles.countdownContainer}>
@@ -111,14 +128,14 @@ export default function ProfileView({ navigation, activeScreen = 'Home' }) {
 
         <View style={styles.subscriptionContainer}>
           <View style={styles.subscriptionInfo}>
-            <Image 
-              source={require('../assets/diamond.png')} // Replace with your diamond icon path
+            <Image
+              source={require('../assets/diamond.png')}
               style={styles.diamondIcon}
             />
             <View style={styles.subscriptionText}>
               <Text style={styles.subscriptionTitle}>Subscription</Text>
               <Text style={styles.subscriptionDetails}>
-                Your are subscribed to TestSwitch Premium
+                You are subscribed to TestSwitch Premium
               </Text>
             </View>
           </View>
@@ -126,8 +143,7 @@ export default function ProfileView({ navigation, activeScreen = 'Home' }) {
             <Text style={styles.restoreButtonText}>Restore</Text>
           </TouchableOpacity>
         </View>
-        
-        {/* Add some padding at the bottom for better scrolling */}
+
         <View style={styles.bottomPadding} />
       </ScrollView>
     </SafeAreaView>
@@ -146,7 +162,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
     paddingTop: 10,
     paddingBottom: 5,
-    marginTop:20
+    marginTop: 20,
   },
   logoContainer: {
     flexDirection: 'row',
@@ -173,9 +189,9 @@ const styles = StyleSheet.create({
     width: 24,
     height: 24,
   },
-  content: {
-    flex: 1,
+  scrollContent: {
     paddingHorizontal: 20,
+    paddingBottom: 30,
   },
   title: {
     fontSize: 30,
@@ -240,7 +256,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   digitGroup: {
-    flexDirection: 'row', // This makes digits appear horizontally
+    flexDirection: 'row',
   },
   countdownNumber: {
     width: 30,
@@ -278,6 +294,7 @@ const styles = StyleSheet.create({
     marginTop: 20,
     justifyContent: 'space-between',
     alignItems: 'center',
+    marginBottom:40
   },
   subscriptionInfo: {
     flexDirection: 'row',
@@ -312,6 +329,6 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   bottomPadding: {
-    height: 30, // Add padding at the bottom of the ScrollView
-  }
+    height: 30,
+  },
 });
