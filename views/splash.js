@@ -1,8 +1,14 @@
 // screens/SplashScreen.js
 import React, { useEffect, useState } from 'react';
+import { useFonts } from 'expo-font';
 import { View, Image, Text, ImageBackground, StyleSheet } from 'react-native';
 
 export default function SplashScreen({ navigation }) {
+
+  const [fontsLoaded] = useFonts({
+    'DMSerif': require('../assets/DMSerif.ttf'),
+  });
+
     useEffect(() => {
         const timeout = setTimeout(() => {
           navigation.replace('Onboarding'); 
@@ -43,7 +49,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 28,
     fontWeight: 'bold',
-    fontFamily: 'System',
+    fontFamily: 'DMSerif',
     marginBottom: 8,
   },
   subtitle: {

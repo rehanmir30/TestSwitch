@@ -1,9 +1,15 @@
 import React from 'react';
 import { View, Text, Image, StyleSheet, TouchableOpacity, Linking } from 'react-native';
-import LinearGradient from 'react-native-linear-gradient';
+import { useFonts } from 'expo-font';
 
 
 export default function OnboardingScreen({ navigation }) {
+
+    const [fontsLoaded] = useFonts({
+      'DMSerif': require('../assets/DMSerif.ttf'),
+    });
+  
+
   return (
     <View style={styles.container}>
       {/* Faded Title above image */}
@@ -40,7 +46,7 @@ export default function OnboardingScreen({ navigation }) {
       </View>
 
       {/* Button */}
-      <TouchableOpacity style={styles.button} onPress={() => navigation.replace('Login')}>
+      <TouchableOpacity style={styles.button} onPress={() => navigation.replace('BookNow')}>
         <Text style={styles.buttonText}>GET STARTED</Text>
       </TouchableOpacity>
     </View>
@@ -79,6 +85,7 @@ const styles = StyleSheet.create({
     fontSize: 40,
     fontWeight: 'bold',
     textAlign: 'center',
+    fontFamily:"DMSerif",
     marginTop: 15,
   },
 
