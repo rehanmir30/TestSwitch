@@ -1,4 +1,5 @@
 import React from 'react';
+import { useFonts } from 'expo-font';
 import {
   View,
   Text,
@@ -26,6 +27,19 @@ export default function ProfileView({ navigation, activeScreen = 'Home' }) {
     },
     subscription: 'Premium',
   };
+const [fontsLoaded] = useFonts({
+    'DMSerifDisplay': require('../assets/DMSerif-Display.ttf'),
+    'DMSerif': require('../assets/DMSerif.ttf'),
+  });
+
+  // Wait until font is loaded
+  if (!fontsLoaded) {
+    return (
+      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+        <Text>Loading...</Text>
+      </View>
+    );
+  }
 
   return (
 
@@ -44,7 +58,7 @@ export default function ProfileView({ navigation, activeScreen = 'Home' }) {
             style={styles.logo}
             resizeMode="contain"
           />
-          <Text style={styles.logoText}>TestSwitch</Text>
+          <Text style={[styles.logoText,{ fontFamily: 'DMSerifDisplay' }]}>TestSwitch</Text>
         </View>
         <TouchableOpacity
           onPress={() => navigation.navigate('Notification')}
@@ -63,7 +77,7 @@ export default function ProfileView({ navigation, activeScreen = 'Home' }) {
         showsVerticalScrollIndicator={false}
         contentContainerStyle={styles.scrollContent}
       >
-        <Text style={styles.title}>Profile</Text>
+        <Text style={[styles.title,{ fontFamily: 'DMSerifDisplay' }]}>Profile</Text>
 
         <View style={styles.userInfo}>
           <View style={styles.avatar}>
@@ -141,7 +155,7 @@ export default function ProfileView({ navigation, activeScreen = 'Home' }) {
               style={styles.diamondIcon}
             />
             <View style={styles.subscriptionText}>
-              <Text style={styles.subscriptionTitle}>Subscription</Text>
+              <Text style={[styles.subscriptionTitle,{ fontFamily: 'DMSerifDisplay' }]}>Subscription</Text>
               <Text style={styles.subscriptionDetails}>
                 You are subscribed to TestSwitch Premium
               </Text>

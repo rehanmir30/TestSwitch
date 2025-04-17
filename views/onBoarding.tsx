@@ -1,40 +1,46 @@
 import React from 'react';
-import { View, Text, Image, StyleSheet, TouchableOpacity, Linking } from 'react-native';
+import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
 import { useFonts } from 'expo-font';
 
-
 export default function OnboardingScreen({ navigation }) {
+  const [fontsLoaded] = useFonts({
+    'DMSerifDisplay': require('../assets/DMSerif-Display.ttf'),
+    'DMSerif': require('../assets/DMSerif.ttf'),
+  });
 
-    const [fontsLoaded] = useFonts({
-      'DMSerif': require('../assets/DMSerif.ttf'),
-    });
-  
+  // Wait until font is loaded
+  if (!fontsLoaded) {
+    return (
+      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+        <Text>Loading...</Text>
+      </View>
+    );
+  }
 
   return (
     <View style={styles.container}>
       {/* Faded Title above image */}
       <View style={styles.coloredBackground}>
-  <Text style={styles.fadedTitle}>TestSwitch</Text>
-
-  <Image
-    source={require('../assets/onBoarding.png')}
-    style={styles.image}
-    resizeMode="contain"
-  />
-</View>
+        <Text style={[styles.fadedTitle, { fontFamily: 'DMSerifDisplay' }]}>TestSwitch</Text>
+        <Image
+          source={require('../assets/onBoarding.png')}
+          style={styles.image}
+          resizeMode="contain"
+        />
+      </View>
 
       {/* Title and Subtext */}
-      <Text style={styles.title}>TestSwitch</Text>
-      <Text style={styles.subtitle}>Your fastest way to hit the road</Text>
+      <Text style={[styles.title,{ fontFamily: 'DMSerifDisplay' }]}>TestSwitch</Text>
+      <Text style={[styles.subtitle,{ fontFamily: 'DMSerif' }]}>Your fastest way to hit the road</Text>
 
       {/* Info Box */}
       <View style={styles.infoBox}>
-        <Text style={styles.infoText}>
+        <Text style={[styles.infoText,{ fontFamily: 'DMSerif' }]}>
           <Text style={styles.icon}>ℹ️ </Text>
           You must have a practical driving test booked with the DVSA before using our service.
         </Text>
 
-        <Text style={styles.linkText}>
+        <Text style={[styles.linkText,{ fontFamily: 'DMSerif' }]}>
           Don’t have a test yet?{' '}
           <Text
             style={styles.bookLink}
@@ -54,38 +60,38 @@ export default function OnboardingScreen({ navigation }) {
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: '#fff',  },
-  
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+  },
+
   coloredBackground: {
     backgroundColor: '#DDE8FF',
-    // padding: 20,
-    // borderRadius: 12, // optional, for rounded corners
-    alignItems: 'center', // centers the content horizontally
+    alignItems: 'center',
     justifyContent: 'center',
-    marginBottom: 20, // space below the section
+    marginBottom: 20,
   },
 
   fadedTitle: {
-    backgroundColor:'#DDE8FF',
+    backgroundColor: '#DDE8FF',
     fontSize: 61,
     textAlign: 'center',
     color: '#407BFF',
     opacity: 0.24,
     marginTop: 20,
   },
-  
+
   image: {
-    backgroundColor:'#DDE8FF',
+    backgroundColor: '#DDE8FF',
     width: '100%',
     height: 280,
-    
   },
 
   title: {
     fontSize: 40,
-    fontWeight: 'bold',
+    // fontWeight: 'bold',
     textAlign: 'center',
-    fontFamily:"DMSerif",
+    // fontFamily: 'DMSerifDisplay',
     marginTop: 15,
   },
 
@@ -105,7 +111,7 @@ const styles = StyleSheet.create({
     fontSize: 19,
     textAlign: 'center',
     lineHeight: 22,
-    marginHorizontal:40,
+    marginHorizontal: 40,
   },
 
   icon: {
@@ -131,7 +137,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginTop: 'auto',
     marginBottom: 20,
-    marginHorizontal:20
+    marginHorizontal: 20,
   },
 
   buttonText: {

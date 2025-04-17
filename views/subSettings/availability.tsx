@@ -1,8 +1,24 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Image,ImageBackground } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
+import { useFonts } from 'expo-font';
 
 export default function Availability({ navigation }) {
+
+  const [fontsLoaded] = useFonts({
+      'DMSerifDisplay': require('../../assets/DMSerif-Display.ttf'),
+      'DMSerif': require('../../assets/DMSerif.ttf'),
+    });
+  
+    // Wait until font is loaded
+    if (!fontsLoaded) {
+      return (
+        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+          <Text>Loading...</Text>
+        </View>
+      );
+    }
+
   return (
 
     <ImageBackground
@@ -23,7 +39,7 @@ export default function Availability({ navigation }) {
       </View>
 
       {/* Title and Subtitle */}
-      <Text style={styles.title}>Availability</Text>
+      <Text style={[styles.title,{ fontFamily: 'DMSerifDisplay' }]}>Availability</Text>
       <Text style={styles.subtitle}>
         Set your general availability by the hour and also specific periods of unavailability, such as appointments and holidays.
       </Text>

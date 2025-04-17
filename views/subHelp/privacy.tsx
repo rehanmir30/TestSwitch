@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, ScrollView, StatusBar, Image ,ImageBackground} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
+import { useFonts } from 'expo-font';
 
 // Sample terms and conditions text
 const termsText = [
@@ -12,13 +13,26 @@ const termsText = [
   'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s.',
 ];
 
-export default function Terms({ navigation }) {
+export default function Privacy({ navigation }) {
+  const [fontsLoaded] = useFonts({
+          'DMSerifDisplay': require('../../assets/DMSerif-Display.ttf'),
+          'DMSerif': require('../../assets/DMSerif.ttf'),
+        });
+      
+        // Wait until font is loaded
+        if (!fontsLoaded) {
+          return (
+            <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+              <Text>Loading...</Text>
+            </View>
+          );
+        }
   return (
-    <ImageBackground
-                    source={require('../../assets/gradientBg.png')}
-                    style={styles.background}
-                    resizeMode="cover"
-                  >
+<ImageBackground
+                source={require('../../assets/gradientBg.png')}
+                style={styles.background}
+                resizeMode="cover"
+              >
     <View style={styles.container}>
       
       {/* Header */}
@@ -40,7 +54,7 @@ export default function Terms({ navigation }) {
       
       {/* Content */}
       <ScrollView style={styles.contentContainer}>
-        <Text style={styles.title}>Terms and Conditions</Text>
+        <Text style={[styles.title,{ fontFamily: 'DMSerifDisplay' }]}>Privacy Policy</Text>
         
         {/* Terms paragraphs */}
         <View style={styles.termsContent}>
@@ -57,14 +71,14 @@ export default function Terms({ navigation }) {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    // backgroundColor: '#f5f7fa',
-  },
   background: {
     flex: 1,
     // justifyContent: 'center',
     // alignItems: 'center',
+  },
+  container: {
+    flex: 1,
+    // backgroundColor: '#f5f7fa',
   },
   header: {
     flexDirection: 'row',

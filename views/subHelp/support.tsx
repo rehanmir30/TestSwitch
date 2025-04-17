@@ -1,9 +1,23 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, Linking, SafeAreaView ,ImageBackground} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
+import { useFonts } from 'expo-font';
 
 export default function Support({ navigation }) {
   const contactEmail = 'contact@testswitch.co.uk';
+  const [fontsLoaded] = useFonts({
+      'DMSerifDisplay': require('../../assets/DMSerif-Display.ttf'),
+      'DMSerif': require('../../assets/DMSerif.ttf'),
+    });
+  
+    // Wait until font is loaded
+    if (!fontsLoaded) {
+      return (
+        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+          <Text>Loading...</Text>
+        </View>
+      );
+    }
 
   const handleEmailPress = () => {
     Linking.openURL(`mailto:${contactEmail}`);
@@ -30,7 +44,7 @@ export default function Support({ navigation }) {
       </View>
 
       <View style={styles.contentContainer}>
-        <Text style={styles.title}>Support</Text>
+        <Text style={[styles.title,{ fontFamily: 'DMSerifDisplay' }]}>Support</Text>
         <Text style={styles.description}>
           If you need help with something not covered in the FAQ's or its something really important then please get in touch
         </Text>

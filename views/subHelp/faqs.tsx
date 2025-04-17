@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, ScrollView, StatusBar,ImageBackground } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
+import { useFonts } from 'expo-font';
 // Sample FAQ data
 const faqData = [
   {
@@ -31,6 +32,22 @@ const faqData = [
 ];
 
 export default function FAQs({ navigation }) {
+
+  const [fontsLoaded] = useFonts({
+        'DMSerifDisplay': require('../../assets/DMSerif-Display.ttf'),
+        'DMSerif': require('../../assets/DMSerif.ttf'),
+      });
+    
+      // Wait until font is loaded
+      if (!fontsLoaded) {
+        return (
+          <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+            <Text>Loading...</Text>
+          </View>
+        );
+      }
+  
+
   return (
         
         <ImageBackground
@@ -55,14 +72,14 @@ export default function FAQs({ navigation }) {
       
       {/* Content */}
       <ScrollView style={styles.contentContainer}>
-        <Text style={styles.title}>FAQ's</Text>
+        <Text style={[styles.title,{ fontFamily: 'DMSerifDisplay' }]}>FAQ's</Text>
         <Text style={styles.subtitle}>You can get info from FAQ's</Text>
         
         {/* FAQ Items */}
         <View style={styles.faqList}>
           {faqData.map((faq) => (
             <View key={faq.id} style={styles.faqItem}>
-              <Text style={styles.questionText}>{faq.question}</Text>
+              <Text style={[styles.questionText,{ fontFamily: 'DMSerifDisplay' }]}>{faq.question}</Text>
               <Text style={styles.answerText}>{faq.answer}</Text>
             </View>
           ))}

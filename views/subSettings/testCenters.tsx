@@ -1,9 +1,26 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image ,ImageBackground} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
+import { useFonts } from 'expo-font';
 
 
 export default function TestCenters({ navigation }) {
+
+  const [fontsLoaded] = useFonts({
+      'DMSerifDisplay': require('../../assets/DMSerif-Display.ttf'),
+      'DMSerif': require('../../assets/DMSerif.ttf'),
+    });
+  
+    // Wait until font is loaded
+    if (!fontsLoaded) {
+      return (
+        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+          <Text>Loading...</Text>
+        </View>
+      );
+    }
+  
+
   const [centre1, setCentre1] = useState('');
   const [centre2, setCentre2] = useState('');
   const [centre3, setCentre3] = useState('');
@@ -31,7 +48,7 @@ export default function TestCenters({ navigation }) {
       </View>
 
       {/* Title */}
-      <Text style={styles.title}>Test Centres</Text>
+      <Text style={[styles.title,{ fontFamily: 'DMSerifDisplay' }]}>Test Centres</Text>
       <Text style={styles.subtitle}>
         Configure up to 3 test centers that you wish to search cancellations for.
       </Text>

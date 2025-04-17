@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useFonts } from 'expo-font';
 import { 
   View, 
   Text, 
@@ -9,6 +10,20 @@ import {
 } from 'react-native';
 
 export default function VerifyingScreen({ navigation }) {
+
+  const [fontsLoaded] = useFonts({
+      'DMSerifDisplay': require('../assets/DMSerif-Display.ttf'),
+      'DMSerif': require('../assets/DMSerif.ttf'),
+    });
+    // Wait until font is loaded
+      if (!fontsLoaded) {
+        return (
+          <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+            <Text>Loading...</Text>
+          </View>
+        );
+      }
+    
   const [progress, setProgress] = useState(0);
 
    useEffect(() => {
@@ -41,15 +56,15 @@ export default function VerifyingScreen({ navigation }) {
         </View>
 
         {/* Verifying text */}
-        <Text style={styles.verifyingText}>VERIFYING</Text>
+        <Text style={[styles.verifyingText, { fontFamily: 'DMSerifDisplay' }]}>VERIFYING</Text>
         
         {/* Message text */}
-        <Text style={styles.messageText}>
+        <Text style={[styles.messageText,{ fontFamily: 'DMSerif' }]}>
           Thank you for submitting your details. We are checking details you have provided.
         </Text>
         
         {/* Time estimate text */}
-        <Text style={styles.timeText}>
+        <Text style={[styles.timeText,{ fontFamily: 'DMSerif' }]}>
           This can take up to 2 minutes please stay on the app.
         </Text>
 
@@ -106,7 +121,7 @@ const styles = StyleSheet.create({
   },
   verifyingText: {
     fontSize: 24,
-    fontWeight: 'bold',
+    // fontWeight: 'bold',
     color: '#016BEC', // Blue color
     marginBottom: 20,
   },

@@ -1,7 +1,24 @@
 import React from 'react';
 import { View, Text, Image, StyleSheet, TouchableOpacity, SafeAreaView, StatusBar, ScrollView,ImageBackground } from 'react-native';
+import { useFonts } from 'expo-font';
 
 export default function HomeView({ navigation, activeScreen = 'Home' }) {
+
+  const [fontsLoaded] = useFonts({
+      'DMSerifDisplay': require('../assets/DMSerif-Display.ttf'),
+      'DMSerif': require('../assets/DMSerif.ttf'),
+    });
+  
+    // Wait until font is loaded
+    if (!fontsLoaded) {
+      return (
+        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+          <Text>Loading...</Text>
+        </View>
+      );
+    }
+  
+
   return (
      <ImageBackground
                 source={require('../assets/gradientBg.png')}
@@ -15,7 +32,7 @@ export default function HomeView({ navigation, activeScreen = 'Home' }) {
         <View style={styles.header}>
           <View style={styles.logoContainer}>
             <Image source={require('../assets/logo.png')} style={styles.logo} />
-            <Text style={styles.appName}>TestSwitch</Text>
+            <Text style={[styles.appName,{ fontFamily: 'DMSerifDisplay' }]}>TestSwitch</Text>
           </View>
           <TouchableOpacity style={styles.notificationBtn}>
             <Image source={require('../assets/bell.png')} style={styles.notificationIcon} />
@@ -47,7 +64,7 @@ export default function HomeView({ navigation, activeScreen = 'Home' }) {
         
         {/* Alerts Section */}
         <View style={styles.alertsSection}>
-          <Text style={styles.sectionTitle}>Latest Alerts</Text>
+          <Text style={[styles.sectionTitle,{ fontFamily: 'DMSerifDisplay' }]}>Latest Alerts</Text>
           
           <View style={[styles.alertCard, { backgroundColor: '#FFEFEC' }]}>
             <View style={styles.alertLeftSection}>
@@ -81,7 +98,7 @@ export default function HomeView({ navigation, activeScreen = 'Home' }) {
             </View> */}
           </View>
           
-          <Text style={styles.sectionTitle}>Previous Alerts</Text>
+          <Text style={[styles.sectionTitle,{ fontFamily: 'DMSerifDisplay' }]}>Previous Alerts</Text>
           
           <View style={[styles.alertCard, { backgroundColor: '#FEECFF' }]}>
             <View style={styles.alertLeftSection}>
@@ -147,6 +164,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginTop: 10,
     paddingVertical: 8,
+    marginTop:20
   },
   logoContainer: {
     flexDirection: 'row',
@@ -283,7 +301,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   alertDay: {
-    fontSize: 14,
+    fontSize: 18,
     fontWeight: 'bold',
     marginBottom: 3,
     color: '#000',

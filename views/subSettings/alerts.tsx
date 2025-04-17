@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, SafeAreaView, TouchableOpacity ,ImageBackground} from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
+import { useFonts } from 'expo-font';
 
 // Custom switch component to match the design in the image
 const CustomSwitch = ({ value, onValueChange }) => {
@@ -27,6 +28,21 @@ const CustomSwitch = ({ value, onValueChange }) => {
 };
 
 export default function Alerts({ navigation }) {
+
+  const [fontsLoaded] = useFonts({
+      'DMSerifDisplay': require('../../assets/DMSerif-Display.ttf'),
+      'DMSerif': require('../../assets/DMSerif.ttf'),
+    });
+  
+    // Wait until font is loaded
+    if (!fontsLoaded) {
+      return (
+        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+          <Text>Loading...</Text>
+        </View>
+      );
+    }
+
   const [alertSettings, setAlertSettings] = useState({
     allTests: true,
     testsMatchingAvailability: true,
@@ -60,7 +76,7 @@ export default function Alerts({ navigation }) {
       </View>
 
       <View style={styles.content}>
-        <Text style={styles.title}>Alerts</Text>
+        <Text style={[styles.title, { fontFamily: 'DMSerifDisplay' }]}>Alerts</Text>
         <Text style={styles.subtitle}>
           Decide how you and when want us to alert you.
         </Text>

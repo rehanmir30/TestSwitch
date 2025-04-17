@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, ScrollView, Image ,ImageBackground} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
+import { useFonts } from 'expo-font';
 
 // Sample data for the driving tips
 const drivingTipsData = [
@@ -68,6 +69,19 @@ const ExpandableTile = ({ title, content, isExpanded, onPress }) => {
 };
 
 export default function Tips({ navigation }) {
+  const [fontsLoaded] = useFonts({
+      'DMSerifDisplay': require('../../assets/DMSerif-Display.ttf'),
+      'DMSerif': require('../../assets/DMSerif.ttf'),
+    });
+  
+    // Wait until font is loaded
+    if (!fontsLoaded) {
+      return (
+        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+          <Text>Loading...</Text>
+        </View>
+      );
+    }
   const [expandedId, setExpandedId] = useState(null);
 
   const toggleExpand = (id) => {
@@ -88,7 +102,7 @@ export default function Tips({ navigation }) {
           <Icon name="chevron-back" size={24} color="#000" />
           </TouchableOpacity>
         <View style={styles.titleContainer}>
-          <Text style={styles.mainTitle}>Driving Test Tips</Text>
+          <Text style={[styles.mainTitle,{ fontFamily: 'DMSerifDisplay' }]}>Driving Test Tips</Text>
           <Text style={styles.subtitle}>Find our expert tips to passing your driving test the first time.</Text>
         </View>
       </View>

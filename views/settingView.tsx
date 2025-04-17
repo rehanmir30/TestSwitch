@@ -1,7 +1,24 @@
 import React from 'react';
 import { View, Text, Image, StyleSheet, TouchableOpacity, ScrollView ,ImageBackground} from 'react-native';
+import { useFonts } from 'expo-font';
 
 export default function SettingsView({ navigation }) {
+
+  const [fontsLoaded] = useFonts({
+      'DMSerifDisplay': require('../assets/DMSerif-Display.ttf'),
+      'DMSerif': require('../assets/DMSerif.ttf'),
+    });
+  
+    // Wait until font is loaded
+    if (!fontsLoaded) {
+      return (
+        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+          <Text>Loading...</Text>
+        </View>
+      );
+    }
+  
+
   return (
     
     <ImageBackground
@@ -16,14 +33,14 @@ export default function SettingsView({ navigation }) {
       {/* Header */}
       <View style={styles.header}>
         <Image source={require('../assets/logo.png')} style={styles.logo} />
-        <Text style={styles.headerTitle}>TestSwitch</Text>
+        <Text style={[styles.headerTitle,{ fontFamily: 'DMSerifDisplay' }]}>TestSwitch</Text>
         {/* <TouchableOpacity>
           <Image source={require('../assets/profile-icon.png')} style={styles.profileIcon} />
         </TouchableOpacity> */}
       </View>
 
       {/* Title */}
-      <Text style={styles.sectionTitle}>Settings</Text>
+      <Text style={[styles.sectionTitle,{ fontFamily: 'DMSerifDisplay' }]}>Settings</Text>
 
       {/* Menu Buttons */}
       <TouchableOpacity 

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, SafeAreaView, TouchableOpacity ,ImageBackground} from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
+import { useFonts } from 'expo-font';
 
 // Custom switch component to match the design in the image
 const CustomSwitch = ({ value, onValueChange }) => {
@@ -42,6 +43,19 @@ const NumberInput = ({ value, onValueChange }) => {
 };
 
 export default function AutoSwitch({ navigation }) {
+  const [fontsLoaded] = useFonts({
+      'DMSerifDisplay': require('../../assets/DMSerif-Display.ttf'),
+      'DMSerif': require('../../assets/DMSerif.ttf'),
+    });
+  
+    // Wait until font is loaded
+    if (!fontsLoaded) {
+      return (
+        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+          <Text>Loading...</Text>
+        </View>
+      );
+    }
   const [autoSettings, setAutoSettings] = useState({
     never: true,
     testsMatchingAvailability: true,
@@ -77,7 +91,7 @@ export default function AutoSwitch({ navigation }) {
       </View>
 
       <View style={styles.content}>
-        <Text style={styles.title}>Auto Switch</Text>
+        <Text style={[styles.title,{ fontFamily: 'DMSerifDisplay' }]}>Auto Switch</Text>
         <Text style={styles.subtitle}>
           Set your specific preferences for when we should automatially move your test.
         </Text>

@@ -8,6 +8,7 @@ import {
   Image,
   ScrollView,
 } from 'react-native';
+import { useFonts } from 'expo-font';
 
 export default function HelpView({ navigation, activeScreen = 'Home' }) {
   const helpItems = [
@@ -59,6 +60,20 @@ export default function HelpView({ navigation, activeScreen = 'Home' }) {
     navigation.navigate(id);
   };
 
+  const [fontsLoaded] = useFonts({
+      'DMSerifDisplay': require('../assets/DMSerif-Display.ttf'),
+      'DMSerif': require('../assets/DMSerif.ttf'),
+    });
+  
+    // Wait until font is loaded
+    if (!fontsLoaded) {
+      return (
+        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+          <Text>Loading...</Text>
+        </View>
+      );
+    }
+
   return (
     <SafeAreaView style={styles.container}>
       {/* Header (fixed) */}
@@ -69,7 +84,7 @@ export default function HelpView({ navigation, activeScreen = 'Home' }) {
             style={styles.logo}
             resizeMode="contain"
           />
-          <Text style={styles.logoText}>TestSwitch</Text>
+          <Text style={[styles.logoText,{ fontFamily: 'DMSerifDisplay' }]}>TestSwitch</Text>
         </View>
         <TouchableOpacity
           onPress={() => navigation.navigate('Notification')}
@@ -88,7 +103,7 @@ export default function HelpView({ navigation, activeScreen = 'Home' }) {
         showsVerticalScrollIndicator={false}
         contentContainerStyle={styles.scrollContentContainer}
       >
-        <Text style={styles.title}>Help</Text>
+        <Text style={[styles.title,{ fontFamily: 'DMSerifDisplay' }]}>Help</Text>
 
         {helpItems.map((item) => (
           <TouchableOpacity
@@ -113,12 +128,12 @@ export default function HelpView({ navigation, activeScreen = 'Home' }) {
         ))}
 
         <View style={styles.disclaimerSection}>
-          <Text style={styles.disclaimerTitle}>Disclaimer</Text>
+          <Text style={[styles.disclaimerTitle,{ fontFamily: 'DMSerifDisplay' }]}>Disclaimer</Text>
           <Text style={styles.disclaimerText}>
             This Service is in no way associated or affiliated with the DVSA or
             any government agencies.
           </Text>
-          <Text style={styles.copyrightText}>2025@TestSwitch Ltd.</Text>
+          <Text style={[styles.copyrightText,{ fontFamily: 'DMSerifDisplay' }]}>2025@TestSwitch Ltd.</Text>
           <Text style={styles.companyNumber}>Company Number 1234455</Text>
 
           <TouchableOpacity style={styles.removeAccountButton}>

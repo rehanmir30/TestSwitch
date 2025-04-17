@@ -11,8 +11,23 @@ import {
   ScrollView,
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons'; // Make sure to install expo icons if not already done
+import { useFonts } from 'expo-font';
 
 export default function BookNowScreen({ navigation }) {
+
+  const [fontsLoaded] = useFonts({
+      'DMSerifDisplay': require('../assets/DMSerif-Display.ttf'),
+      'DMSerif': require('../assets/DMSerif.ttf'),
+    });
+  
+    // Wait until font is loaded
+    if (!fontsLoaded) {
+      return (
+        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+          <Text>Loading...</Text>
+        </View>
+      );
+    }
   // State variables to store user inputs
   const [licenseNumber, setLicenseNumber] = useState('');
   const [referenceNumber, setReferenceNumber] = useState('');
@@ -43,7 +58,7 @@ export default function BookNowScreen({ navigation }) {
 
           {/* Driving License Number Section */}
           <View style={styles.inputContainer}>
-            <Text style={styles.inputLabel}>Driving License Number</Text>
+            <Text style={[styles.inputLabel, { fontFamily: 'DMSerif' }]}>Driving License Number</Text>
             <Text style={styles.inputSubtitle}>Write your driving license number</Text>
             <TextInput
               style={styles.textInput}

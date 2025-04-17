@@ -5,16 +5,18 @@ import { View, Image, Text, ImageBackground, StyleSheet } from 'react-native';
 
 export default function SplashScreen({ navigation }) {
 
-  const [fontsLoaded] = useFonts({
+const [fontsLoaded] = useFonts({
+    'DMSerifDisplay': require('../assets/DMSerif-Display.ttf'),
     'DMSerif': require('../assets/DMSerif.ttf'),
   });
-
+  
     useEffect(() => {
         const timeout = setTimeout(() => {
           navigation.replace('Onboarding'); 
         }, 3000);
         return () => clearTimeout(timeout);
       }, []);
+      
   return (
     <ImageBackground
       source={require('../assets/bg.png')}
@@ -23,8 +25,8 @@ export default function SplashScreen({ navigation }) {
     >
       <View style={styles.container}>
         <Image source={require('../assets/logo.png')} style={styles.logo} />
-        <Text style={styles.title}>TestSwitch</Text>
-        <Text style={styles.subtitle}>Your fastest way to hit the road</Text>
+        <Text style={[styles.title,{ fontFamily: 'DMSerifDisplay' }]}>TestSwitch</Text>
+        <Text style={[styles.subtitle,{ fontFamily: 'DMSerif' }]}>Your fastest way to hit the road</Text>
       </View>
     </ImageBackground>
   );
@@ -48,8 +50,8 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 28,
-    fontWeight: 'bold',
-    fontFamily: 'DMSerif',
+    // fontWeight: 'bold',
+    // fontFamily: 'DMSerif',
     marginBottom: 8,
   },
   subtitle: {
