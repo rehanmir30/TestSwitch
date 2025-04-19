@@ -9,6 +9,7 @@ export default function TestCenters({ navigation }) {
   const [fontsLoaded] = useFonts({
       'DMSerifDisplay': require('../../assets/DMSerif-Display.ttf'),
       'DMSerif': require('../../assets/DMSerif.ttf'),
+      'DMSans': require('../../assets/DMSans.ttf'),
     });
   
     // Wait until font is loaded
@@ -42,9 +43,14 @@ export default function TestCenters({ navigation }) {
   <Icon name="chevron-back" size={24} color="#000" />
 </TouchableOpacity>
 
-        <TouchableOpacity>
-          <Image source={require('../../assets/bell.png')} style={styles.bellIcon} />
-        </TouchableOpacity>
+        <TouchableOpacity
+                      onPress={() => navigation.navigate('Notification')}
+                      style={styles.notificationIcon}
+                    >
+                      
+                                    <Image source={require('../../assets/bell.png')} style={styles.notificationIcon} />
+                                  
+                    </TouchableOpacity>
       </View>
 
       {/* Title */}
@@ -110,6 +116,14 @@ export default function TestCenters({ navigation }) {
 }
 
 const styles = StyleSheet.create({
+  notificationIcon: {
+    width: 40,
+    height: 40,
+    borderRadius: 20,
+    backgroundColor: '#f0f0f0',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
   background: {
     flex: 1,
     // justifyContent: 'center',
@@ -131,11 +145,11 @@ const styles = StyleSheet.create({
     fontSize: 24,
     color: '#000',
   },
-  bellIcon: {
-    width: 30,
-    height: 30,
-    resizeMode: 'contain',
-  },
+  // bellIcon: {
+  //   width: 30,
+  //   height: 30,
+  //   resizeMode: 'contain',
+  // },
   title: {
     fontSize: 24,
     // fontWeight: '400',
@@ -147,6 +161,7 @@ const styles = StyleSheet.create({
     color: '#4d4d4d',
     fontWeight: '700',
     marginVertical: 10,
+    fontFamily:"DMSans"
   },
   inputWrapper: {
     marginTop: 15,
@@ -164,8 +179,9 @@ const styles = StyleSheet.create({
   },
   input: {
     flex: 1,
-    fontSize: 18,
-    fontWeight:"700"
+    fontSize: 22,
+    fontWeight:"700",
+    fontFamily:"DMSans"
   },
   inputIcon: {
     width: 18,
@@ -192,7 +208,8 @@ const styles = StyleSheet.create({
   },
   saveButtonText: {
     color: '#fff',
-    fontWeight: '600',
+    fontWeight: '700',
     fontSize: 16,
+    fontFamily:"DMSans"
   },
 });

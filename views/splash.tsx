@@ -8,7 +8,10 @@ export default function SplashScreen({ navigation }) {
 const [fontsLoaded] = useFonts({
     'DMSerifDisplay': require('../assets/DMSerif-Display.ttf'),
     'DMSerif': require('../assets/DMSerif.ttf'),
+    'DMSans': require('../assets/DMSans.ttf'),
   });
+
+  
   
     useEffect(() => {
         const timeout = setTimeout(() => {
@@ -16,7 +19,13 @@ const [fontsLoaded] = useFonts({
         }, 3000);
         return () => clearTimeout(timeout);
       }, []);
-      
+      if (!fontsLoaded) {
+        return (
+          <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+            <Text>Loading...</Text>
+          </View>
+        );
+      }
   return (
     <ImageBackground
       source={require('../assets/bg.png')}
@@ -26,7 +35,7 @@ const [fontsLoaded] = useFonts({
       <View style={styles.container}>
         <Image source={require('../assets/logo.png')} style={styles.logo} />
         <Text style={[styles.title,{ fontFamily: 'DMSerifDisplay' }]}>TestSwitch</Text>
-        <Text style={[styles.subtitle,{ fontFamily: 'DMSerif' }]}>Your fastest way to hit the road</Text>
+        <Text style={[styles.subtitle,{ fontFamily: 'DMSans' }]}>Your fastest way to hit the road</Text>
       </View>
     </ImageBackground>
   );
@@ -43,20 +52,19 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
   },
   logo: {
-    width: 80,
-    height: 80,
+    width: 88,
+    height: 88,
     marginBottom: 20,
     resizeMode: 'contain',
   },
   title: {
-    fontSize: 28,
-    // fontWeight: 'bold',
-    // fontFamily: 'DMSerif',
+    fontSize: 48,
     marginBottom: 8,
   },
   subtitle: {
     fontSize: 16,
-    color: '#333',
+    color: '#000',
     textAlign: 'center',
+    fontWeight:"bold"
   },
 });

@@ -18,6 +18,7 @@ export default function BookNowScreen({ navigation }) {
   const [fontsLoaded] = useFonts({
       'DMSerifDisplay': require('../assets/DMSerif-Display.ttf'),
       'DMSerif': require('../assets/DMSerif.ttf'),
+      'DMSans': require('../assets/DMSans.ttf'),
     });
   
     // Wait until font is loaded
@@ -58,7 +59,7 @@ export default function BookNowScreen({ navigation }) {
 
           {/* Driving License Number Section */}
           <View style={styles.inputContainer}>
-            <Text style={[styles.inputLabel, { fontFamily: 'DMSerif' }]}>Driving License Number</Text>
+            <Text style={[styles.inputLabel, {  }]}>Driving License Number</Text>
             <Text style={styles.inputSubtitle}>Write your driving license number</Text>
             <TextInput
               style={styles.textInput}
@@ -143,6 +144,7 @@ const styles = StyleSheet.create({
     marginLeft: 10,
     alignItems: 'center',
     justifyContent: 'center',
+    fontFamily:"DMSans"
   },
   inputContainer: {
     paddingHorizontal: 20,
@@ -150,14 +152,16 @@ const styles = StyleSheet.create({
   },
   inputLabel: {
     fontSize: 24,
-    fontWeight: 'bold',
+    fontWeight: 900,
     marginBottom: 5,
+    fontFamily: 'DMSans'
   },
   inputSubtitle: {
     fontSize: 18,
     color: '#4d4d4d',
+    fontFamily:"DMSans",
     marginBottom: 15,
-    fontWeight:700,
+    fontWeight:"bold",
   },
   textInput: {
     height: 50,
@@ -165,7 +169,9 @@ const styles = StyleSheet.create({
     borderColor: '#c9c9c9',
     borderRadius: 8,
     paddingHorizontal: 10,
-    fontSize: 16,
+    fontSize: 20,
+    fontFamily:"DMSans",
+    fontWeight:"bold",
     backgroundColor: 'white',
   },
   inputExample: {
@@ -190,7 +196,8 @@ const styles = StyleSheet.create({
   },
   saveButtonText: {
     color: 'white',
-    fontSize: 16,
+    fontSize: 20,
     fontWeight: 'bold',
+    fontFamily:"DMSans"
   }
 });

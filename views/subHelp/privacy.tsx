@@ -41,15 +41,14 @@ export default function Privacy({ navigation }) {
                           <Icon name="chevron-back" size={24} color="#000" />
                           </TouchableOpacity>
         
-        <TouchableOpacity style={styles.bellIconContainer}>
-          <View style={styles.bellIcon}>
-            <Image 
-              source={require('../../assets/bell.png')} 
-              style={styles.bellImage}
-              resizeMode="contain"
-            />
-          </View>
-        </TouchableOpacity>
+         <TouchableOpacity
+                                     onPress={() => navigation.navigate('Notification')}
+                                     style={styles.notificationIcon}
+                                   >
+                                     
+                                                   <Image source={require('../../assets/bell.png')} style={styles.notificationIcon} />
+                                                 
+                                   </TouchableOpacity>
       </View>
       
       {/* Content */}
@@ -71,6 +70,14 @@ export default function Privacy({ navigation }) {
 }
 
 const styles = StyleSheet.create({
+  notificationIcon: {
+    width: 40,
+    height: 40,
+    borderRadius: 20,
+    backgroundColor: '#f0f0f0',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
   background: {
     flex: 1,
     // justifyContent: 'center',

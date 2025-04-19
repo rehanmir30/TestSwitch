@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, Linking, SafeAreaView ,ImageBackground} from 'react-native';
+import { View, Text, TouchableOpacity, Image,StyleSheet, Linking, SafeAreaView ,ImageBackground} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { useFonts } from 'expo-font';
 
@@ -37,9 +37,14 @@ export default function Support({ navigation }) {
                   <Icon name="chevron-back" size={24} color="#000" />
                   </TouchableOpacity>
         <View style={styles.iconContainer}>
-          <TouchableOpacity style={styles.notificationIcon}>
-            <Text style={styles.notificationIconText}>🔔</Text>
-          </TouchableOpacity>
+           <TouchableOpacity
+                                       onPress={() => navigation.navigate('Notification')}
+                                       style={styles.notificationIcon}
+                                     >
+                                       
+                                                     <Image source={require('../../assets/bell.png')} style={styles.notificationIcon} />
+                                                   
+                                     </TouchableOpacity>
         </View>
       </View>
 
@@ -87,17 +92,12 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   notificationIcon: {
-    width: 36,
-    height: 36,
-    borderRadius: 18,
-    backgroundColor: '#fff',
+    width: 40,
+    height: 40,
+    borderRadius: 20,
+    backgroundColor: '#f0f0f0',
     justifyContent: 'center',
     alignItems: 'center',
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 1 },
-    shadowOpacity: 0.1,
-    shadowRadius: 2,
-    elevation: 2,
   },
   notificationIconText: {
     fontSize: 16,

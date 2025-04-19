@@ -30,6 +30,7 @@ export default function ProfileView({ navigation, activeScreen = 'Home' }) {
 const [fontsLoaded] = useFonts({
     'DMSerifDisplay': require('../assets/DMSerif-Display.ttf'),
     'DMSerif': require('../assets/DMSerif.ttf'),
+    'DMSans': require('../assets/DMSans.ttf'),
   });
 
   // Wait until font is loaded
@@ -60,16 +61,14 @@ const [fontsLoaded] = useFonts({
           />
           <Text style={[styles.logoText,{ fontFamily: 'DMSerifDisplay' }]}>TestSwitch</Text>
         </View>
-        <TouchableOpacity
-          onPress={() => navigation.navigate('Notification')}
-          style={styles.notificationIcon}
-        >
-          <Image
-            source={require('../assets/bell.png')}
-            style={styles.notificationImage}
-            resizeMode="contain"
-          />
-        </TouchableOpacity>
+         <TouchableOpacity
+                       onPress={() => navigation.navigate('Notification')}
+                       style={styles.notificationIcon}
+                     >
+                       
+                                     <Image source={require('../assets/bell.png')} style={styles.notificationIcon} />
+                                   
+                     </TouchableOpacity>
       </View>
 
       {/* Scrollable Content */}
@@ -117,27 +116,29 @@ const [fontsLoaded] = useFonts({
               <Text style={styles.countdownNumber}>1</Text>
               <Text style={styles.countdownNumber}>1</Text>
               <Text style={styles.countdownNumber}>4</Text>
+              <View style={styles.countdownSeparator}>
+            <Text style={styles.countdownDot}>•</Text>
+            <Text style={styles.countdownDot}>•</Text>
+          </View>
             </View>
             <Text style={styles.countdownLabel}>Days</Text>
           </View>
 
-          <View style={styles.countdownSeparator}>
-            <Text style={styles.countdownDot}>•</Text>
-            <Text style={styles.countdownDot}>•</Text>
-          </View>
+          
 
           <View style={styles.countdownGroup}>
             <View style={styles.digitGroup}>
               <Text style={styles.countdownNumber}>1</Text>
               <Text style={styles.countdownNumber}>9</Text>
+              <View style={styles.countdownSeparator}>
+            <Text style={styles.countdownDot}>•</Text>
+            <Text style={styles.countdownDot}>•</Text>
+          </View>
             </View>
             <Text style={styles.countdownLabel}>Hours</Text>
           </View>
 
-          <View style={styles.countdownSeparator}>
-            <Text style={styles.countdownDot}>•</Text>
-            <Text style={styles.countdownDot}>•</Text>
-          </View>
+         
 
           <View style={styles.countdownGroup}>
             <View style={styles.digitGroup}>
@@ -252,11 +253,13 @@ const styles = StyleSheet.create({
   userName: {
     fontSize: 24,
     fontWeight: 'bold',
+    fontFamily:"DMSans"
   },
   userEmail: {
     fontSize: 16,
     color: '#000',
     fontWeight: 'bold',
+    fontFamily:"DMSans"
   },
   infoCard: {
     // backgroundColor: '#FFFFFF',
@@ -272,12 +275,14 @@ const styles = StyleSheet.create({
     marginBottom: 4,
     fontWeight: 'bold',
     textAlign: 'center',
+    fontFamily:"DMSans"
   },
   infoValue: {
-    fontSize: 18,
+    fontSize: 20,
     fontWeight: '700',
     textAlign: 'center',
     color: '#000',
+    fontFamily:"DMSans"
   },
   countdownContainer: {
     flexDirection: 'row',
@@ -324,12 +329,13 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     backgroundColor: '#ECF1FD',
     borderRadius: 16,
-    borderColor:"#016bec",
     padding: 16,
     marginTop: 20,
     justifyContent: 'space-between',
     alignItems: 'center',
-    marginBottom:60
+    marginBottom:60,
+    borderColor:"#016BEC",
+    borderWidth:2,
   },
   subscriptionInfo: {
     flexDirection: 'row',
@@ -359,7 +365,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#4285F4',
     paddingHorizontal: 16,
     paddingVertical: 8,
-    borderRadius: 20,
+    borderRadius: 12,
   },
   restoreButtonText: {
     color: '#FFFFFF',

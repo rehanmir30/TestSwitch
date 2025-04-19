@@ -6,6 +6,7 @@ export default function OnboardingScreen({ navigation }) {
   const [fontsLoaded] = useFonts({
     'DMSerifDisplay': require('../assets/DMSerif-Display.ttf'),
     'DMSerif': require('../assets/DMSerif.ttf'),
+    'DMSans': require('../assets/DMSans.ttf'),
   });
 
   // Wait until font is loaded
@@ -31,16 +32,69 @@ export default function OnboardingScreen({ navigation }) {
 
       {/* Title and Subtext */}
       <Text style={[styles.title,{ fontFamily: 'DMSerifDisplay' }]}>TestSwitch</Text>
-      <Text style={[styles.subtitle,{ fontFamily: 'DMSerif' }]}>Your fastest way to hit the road</Text>
+      <Text style={[styles.subtitle,{ fontFamily: 'DMSans' }]}>Your fastest way to hit the road</Text>
 
       {/* Info Box */}
       <View style={styles.infoBox}>
-        <Text style={[styles.infoText,{ fontFamily: 'DMSerif' }]}>
-          <Text style={styles.icon}>ℹ️ </Text>
-          You must have a practical driving test booked with the DVSA before using our service.
-        </Text>
+      <View
+  style={{
+    flexDirection: 'row',
+    alignItems: 'flex-start',
+    justifyContent: 'center',
+    alignSelf: 'center',
+    maxWidth: '80%',
+    marginVertical: 10,
+    paddingHorizontal: 20, // Optional for spacing on sides
+  }}
+>
+  <View
+    style={{
+      width: 24,
+      height: 24,
+      borderRadius: 12,
+      borderWidth: 1.5,
+      borderColor: '#407BFF',
+      justifyContent: 'center',
+      alignItems: 'center',
+      marginRight: 10,
+    }}
+  >
+    <Text style={{ color: '#407BFF', fontWeight: 'bold', fontSize: 16 }}>i</Text>
+  </View>
 
-        <Text style={[styles.linkText,{ fontFamily: 'DMSerif' }]}>
+  <Text
+    style={[
+      styles.infoText,
+      {
+        fontFamily: 'DMSans',
+        marginLeft: 0,
+        paddingLeft: 0,
+        textAlign: 'left',
+      },
+    ]}
+  >
+    You must have a practical driving test booked with the DVSA before using our service.
+  </Text>
+</View>
+
+        {/* <Text style={[styles.infoText,{ fontFamily: 'DMSerif', }]}> */}
+          {/* <View style={{
+                          width: 24,
+                          height: 24,
+                          borderRadius: 14,
+                          borderWidth: 1.5,
+                          
+                          borderColor: '#407BFF' ,
+                          justifyContent: 'center',
+                          alignItems: 'center',
+                        }}>
+                          <Text style={{ color:'#407BFF', fontWeight: 'bold', fontSize: 16 }}>i</Text>
+                        </View>
+                        <View style={{width:8}}><Text>  </Text></View> */}
+          {/* You must have a practical driving test booked with the DVSA before using our service.
+        </Text> */}
+
+        <Text style={[styles.linkText,{ fontFamily: 'DMSans',fontWeight:"bold" }]}>
           Don’t have a test yet?{' '}
           <Text
             style={styles.bookLink}
@@ -62,14 +116,14 @@ export default function OnboardingScreen({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#FAFAFA',
   },
 
   coloredBackground: {
     backgroundColor: '#DDE8FF',
     alignItems: 'center',
     justifyContent: 'center',
-    marginBottom: 20,
+    marginBottom: 10,
   },
 
   fadedTitle: {
@@ -78,7 +132,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     color: '#407BFF',
     opacity: 0.24,
-    marginTop: 20,
+    marginTop: 50,
   },
 
   image: {
@@ -89,9 +143,7 @@ const styles = StyleSheet.create({
 
   title: {
     fontSize: 40,
-    // fontWeight: 'bold',
     textAlign: 'center',
-    // fontFamily: 'DMSerifDisplay',
     marginTop: 15,
   },
 
@@ -100,18 +152,21 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     marginBottom: 25,
     color: '#000',
+    fontWeight:"bold"
   },
 
   infoBox: {
     marginHorizontal: 10,
     marginBottom: 20,
+    
   },
 
   infoText: {
     fontSize: 19,
-    textAlign: 'center',
+    // textAlign: 'center',
+    fontWeight:"bold",
     lineHeight: 22,
-    marginHorizontal: 40,
+    // marginHorizontal: 40,
   },
 
   icon: {
@@ -125,9 +180,10 @@ const styles = StyleSheet.create({
   },
 
   bookLink: {
-    color: '#FF4D4D',
+    color: '#FB504E',
     fontWeight: 'bold',
     textDecorationLine: 'underline',
+    fontFamily:"DMSans"
   },
 
   button: {
@@ -142,7 +198,9 @@ const styles = StyleSheet.create({
 
   buttonText: {
     color: '#fff',
-    fontWeight: '600',
-    fontSize: 16,
+    fontWeight: '700',
+    fontSize: 20,
+    fontFamily:"DMSans",
+
   },
 });

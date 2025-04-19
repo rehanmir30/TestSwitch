@@ -14,6 +14,11 @@ import Availability from './views/subSettings/availability';
 import Alerts from './views/subSettings/alerts';
 import AutoSwitch from './views/subSettings/autoSwitch';
 
+import AvailabilitySub from './views/subSettings/availabilitySub';
+import SpecificUnAvailability from './views/subSettings/specificUnAvailability';
+import AddSpecificUnAvailability from './views/subSettings/addSpecificUnAvailability';
+
+
 import Tips from './views/subHelp/tips';
 import FAQs from './views/subHelp/faqs';
 import FeedBack from './views/subHelp/feedback';
@@ -37,6 +42,9 @@ export default function App() {
         <Stack.Screen name="Notification" component={NotificationsScreen} />
   <Stack.Screen name="TestCenters" component={TestCenters} />
   <Stack.Screen name="Availability" component={Availability} />
+  <Stack.Screen name="AvailabilitySub" component={AvailabilitySub} />
+  <Stack.Screen name="SpecificUnAvailability" component={SpecificUnAvailability} />
+  <Stack.Screen name="AddSpecificUnAvailability" component={AddSpecificUnAvailability} />
   <Stack.Screen name="Alerts" component={Alerts} />
   <Stack.Screen name="AutoSwitch" component={AutoSwitch} />
 
@@ -46,6 +54,7 @@ export default function App() {
   <Stack.Screen name="Privacy" component={Privacy} />
   <Stack.Screen name="Support" component={Support} />
   <Stack.Screen name="Terms" component={Terms} />
+  {/* <Stack.Screen name="AvailabilitySub" component={AvailabilitySub} /> */}
       </Stack.Navigator>
     </NavigationContainer>
   );

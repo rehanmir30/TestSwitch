@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, ScrollView, StatusBar,ImageBackground } from 'react-native';
+import { View, Text, TouchableOpacity, Image,StyleSheet, ScrollView, StatusBar,ImageBackground } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { useFonts } from 'expo-font';
 // Sample FAQ data
@@ -63,11 +63,14 @@ export default function FAQs({ navigation }) {
                  <Icon name="chevron-back" size={24} color="#000" />
                  </TouchableOpacity>
         
-        <TouchableOpacity style={styles.bellIconContainer}>
-          <View style={styles.bellIcon}>
-            <Text style={styles.bellIconText}>🔔</Text>
-          </View>
-        </TouchableOpacity>
+         <TouchableOpacity
+                                     onPress={() => navigation.navigate('Notification')}
+                                     style={styles.notificationIcon}
+                                   >
+                                     
+                                                   <Image source={require('../../assets/bell.png')} style={styles.notificationIcon} />
+                                                 
+                                   </TouchableOpacity>
       </View>
       
       {/* Content */}
@@ -99,6 +102,14 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     // backgroundColor: '#f5f7fa',
+  },
+  notificationIcon: {
+    width: 40,
+    height: 40,
+    borderRadius: 20,
+    backgroundColor: '#f0f0f0',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   header: {
     flexDirection: 'row',

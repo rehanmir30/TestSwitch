@@ -8,6 +8,7 @@ export default function Availability({ navigation }) {
   const [fontsLoaded] = useFonts({
       'DMSerifDisplay': require('../../assets/DMSerif-Display.ttf'),
       'DMSerif': require('../../assets/DMSerif.ttf'),
+      'DMSans': require('../../assets/DMSans.ttf'),
     });
   
     // Wait until font is loaded
@@ -33,9 +34,14 @@ export default function Availability({ navigation }) {
         <TouchableOpacity onPress={() => navigation.goBack()}>
           <Icon name="chevron-back" size={24} color="#000" />
         </TouchableOpacity>
-        <TouchableOpacity>
-          <Image source={require('../../assets/bell.png')} style={styles.bellIcon} />
-        </TouchableOpacity>
+       <TouchableOpacity
+                             onPress={() => navigation.navigate('Notification')}
+                             style={styles.notificationIcon}
+                           >
+                             
+                                           <Image source={require('../../assets/bell.png')} style={styles.notificationIcon} />
+                                         
+                           </TouchableOpacity>
       </View>
 
       {/* Title and Subtitle */}
@@ -47,7 +53,7 @@ export default function Availability({ navigation }) {
       {/* Availability Button */}
       <TouchableOpacity
         style={[styles.card, { borderColor: '#96b7ff' }]}
-        onPress={() => navigation.navigate('AvailabilityDetails')}>
+        onPress={() => navigation.navigate('AvailabilitySub')}>
         <View style={styles.cardContent}>
           <Image source={require('../../assets/availability-icon.png')} style={styles.cardIcon} />
           <Text style={styles.cardText}>Availability</Text>
@@ -58,7 +64,7 @@ export default function Availability({ navigation }) {
       {/* Specific Unavailability Button */}
       <TouchableOpacity
         style={[styles.card, { borderColor: '#e1715b' }]}
-        onPress={() => navigation.navigate('SpecificUnavailability')}>
+        onPress={() => navigation.navigate('SpecificUnAvailability')}>
         <View style={styles.cardContent}>
           <Image source={require('../../assets/unavailability-icon.png')} style={styles.cardIcon} />
           <Text style={styles.cardText}>Specific Unavailability</Text>
@@ -87,11 +93,19 @@ const styles = StyleSheet.create({
       marginTop:20,
       marginBottom: 25,
     },
-    bellIcon: {
-      width: 30,
-      height: 30,
-      resizeMode: 'contain',
+    notificationIcon: {
+      width: 40,
+      height: 40,
+      borderRadius: 20,
+      backgroundColor: '#f0f0f0',
+      justifyContent: 'center',
+      alignItems: 'center',
     },
+    // bellIcon: {
+    //   width: 30,
+    //   height: 30,
+    //   resizeMode: 'contain',
+    // },
     title: {
       fontSize: 24,
       fontWeight: '400',
@@ -103,11 +117,12 @@ const styles = StyleSheet.create({
       color: '#4d4d4d',
       marginBottom: 30,
       fontWeight: '700',
+      fontFamily:"DMSans"
     },
     card: {
       borderWidth: 1,
       borderRadius: 12,
-      padding: 16,
+      padding: 8,
       marginBottom: 15,
       flexDirection: 'row',
       justifyContent: 'space-between',
@@ -119,8 +134,8 @@ const styles = StyleSheet.create({
       alignItems: 'center',
     },
     cardIcon: {
-      width: 24,
-      height: 24,
+      width: 40,
+      height: 40,
       marginRight: 12,
       resizeMode: 'contain',
     },

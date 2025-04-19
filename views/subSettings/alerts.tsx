@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, SafeAreaView, TouchableOpacity ,ImageBackground} from 'react-native';
+import { View, Text, StyleSheet, Image,SafeAreaView, TouchableOpacity ,ImageBackground} from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { useFonts } from 'expo-font';
 
@@ -32,6 +32,7 @@ export default function Alerts({ navigation }) {
   const [fontsLoaded] = useFonts({
       'DMSerifDisplay': require('../../assets/DMSerif-Display.ttf'),
       'DMSerif': require('../../assets/DMSerif.ttf'),
+      'DMSans': require('../../assets/DMSans.ttf'),
     });
   
     // Wait until font is loaded
@@ -69,9 +70,14 @@ export default function Alerts({ navigation }) {
           <Ionicons name="arrow-back" size={24} color="#000" />
         </TouchableOpacity>
         <View style={styles.headerRight}>
-          <View style={styles.notificationIcon}>
-            <Ionicons name="notifications-outline" size={24} color="#000" />
-          </View>
+          <TouchableOpacity
+                                      onPress={() => navigation.navigate('Notification')}
+                                      style={styles.notificationIcon}
+                                    >
+                                      
+                                                    <Image source={require('../../assets/bell.png')} style={styles.notificationIcon} />
+                                                  
+                                    </TouchableOpacity>
         </View>
       </View>
 
@@ -175,6 +181,7 @@ const styles = StyleSheet.create({
     color: '#4d4d4d',
     fontWeight:"700",
     marginBottom: 30,
+    fontFamily:"DMSans"
   },
   settingsContainer: {
     // backgroundColor: 'white',
@@ -191,11 +198,12 @@ const styles = StyleSheet.create({
   settingText: {
     fontSize: 20,
     color: '#000',
-    fontWeight:700
+    fontWeight:700,
+    fontFamily:"DMSans"
   },
   divider: {
     height: 1,
-    backgroundColor: '#e2evff',
+    backgroundColor: '#e2ebff',
     marginLeft: 16,
   },
   // Custom switch styles to match the design in the image

@@ -1,11 +1,19 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
 import HomeView from './homeView';
+import { useFonts } from 'expo-font';
 import SettingsView from './settingView';
 import ProfileView from './profileView';
 import HelpView from './helpView';
 
 export default function DashboardScreen({ navigation, activeScreen = 'Home' }) {
+
+  const [fontsLoaded] = useFonts({
+      'DMSerifDisplay': require('../assets/DMSerif-Display.ttf'),
+      'DMSerif': require('../assets/DMSerif.ttf'),
+      'DMSans': require('../assets/DMSans.ttf'),
+    });
+
   const [active, setActive] = useState(activeScreen);
 
   const navigateTo = (screenName) => {
@@ -121,21 +129,26 @@ const styles = StyleSheet.create({
     paddingVertical: 5,
   },
   icon: {
-    width: 24,
-    height: 24,
+    width: 40,
+    height: 40,
   },
   activeIcon: {
-    tintColor: '#2D7DF6',
+    tintColor: '#016BEC',
   },
   inactiveIcon: {
     tintColor: '#6E6E6E',
   },
   navText: {
-    fontSize: 12,
+    fontSize: 14,
     marginTop: 4,
-    color: '#6E6E6E',
+    color: '#7B7B7B',
+    fontFamily:"DMSans",
+    fontWeight:'bold'
   },
   activeText: {
-    color: '#2D7DF6',
+    fontSize:14,
+    color: '#016BEC',
+    fontFamily:"DMSans",
+    fontWeight:'bold'
   },
 });

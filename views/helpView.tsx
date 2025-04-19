@@ -7,6 +7,7 @@ import {
   TouchableOpacity,
   Image,
   ScrollView,
+  ImageBackground
 } from 'react-native';
 import { useFonts } from 'expo-font';
 
@@ -63,6 +64,7 @@ export default function HelpView({ navigation, activeScreen = 'Home' }) {
   const [fontsLoaded] = useFonts({
       'DMSerifDisplay': require('../assets/DMSerif-Display.ttf'),
       'DMSerif': require('../assets/DMSerif.ttf'),
+      'DMSans': require('../assets/DMSans.ttf'),
     });
   
     // Wait until font is loaded
@@ -75,6 +77,13 @@ export default function HelpView({ navigation, activeScreen = 'Home' }) {
     }
 
   return (
+
+    <ImageBackground
+                source={require('../assets/gradientBg.png')}
+                style={styles.background}
+                resizeMode="cover"
+              >
+
     <SafeAreaView style={styles.container}>
       {/* Header (fixed) */}
       <View style={styles.header}>
@@ -86,16 +95,14 @@ export default function HelpView({ navigation, activeScreen = 'Home' }) {
           />
           <Text style={[styles.logoText,{ fontFamily: 'DMSerifDisplay' }]}>TestSwitch</Text>
         </View>
-        <TouchableOpacity
-          onPress={() => navigation.navigate('Notification')}
-          style={styles.notificationIcon}
-        >
-          <Image
-            source={require('../assets/bell.png')}
-            style={styles.notificationImage}
-            resizeMode="contain"
-          />
-        </TouchableOpacity>
+         <TouchableOpacity
+                       onPress={() => navigation.navigate('Notification')}
+                       style={styles.notificationIcon}
+                     >
+                       
+                                     <Image source={require('../assets/bell.png')} style={styles.notificationIcon} />
+                                   
+                     </TouchableOpacity>
       </View>
 
       {/* Scrollable Content */}
@@ -142,13 +149,20 @@ export default function HelpView({ navigation, activeScreen = 'Home' }) {
         </View>
       </ScrollView>
     </SafeAreaView>
+    </ImageBackground>
   );
 }
 
 const styles = StyleSheet.create({
+
+  background: {
+    flex: 1,
+    // justifyContent: 'center',
+    // alignItems: 'center',
+  },
   container: {
     flex: 1,
-    backgroundColor: '#F6F9FC',
+    // backgroundColor: '#F6F9FC',
   },
   header: {
     flexDirection: 'row',
@@ -199,7 +213,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     borderRadius: 12,
     marginBottom: 10,
-    padding: 16,
+    padding: 8,
     borderWidth: 1,
     borderColor: 'rgba(0,0,0,0.06)',
   },
@@ -208,13 +222,14 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   itemIcon: {
-    width: 24,
-    height: 24,
+    width: 40,
+    height: 40,
     marginRight: 12,
   },
   itemTitle: {
-    fontSize: 18,
-    fontWeight: '500',
+    fontSize: 22,
+    fontWeight: '700',
+    fontFamily:"DMSans"
   },
   arrowIcon: {
     width: 20,
@@ -236,6 +251,7 @@ const styles = StyleSheet.create({
     fontWeight:700,
     textAlign: 'center',
     marginBottom: 10,
+    fontFamily:"DMSans",
     paddingHorizontal: 20,
   },
   copyrightText: {
@@ -247,6 +263,7 @@ const styles = StyleSheet.create({
     fontSize: 12,
     color: '#676767',
     fontWeight: '700',
+    fontFamily:"DMSans",
     marginBottom: 20,
   },
   removeAccountButton: {
@@ -256,7 +273,7 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     borderWidth: 1,
     borderColor: '#fb504e',
-    marginBottom:30,
+    marginBottom:50,
   },
   removeAccountText: {
     color: '#fd504e',

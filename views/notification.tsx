@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, ScrollView, StatusBar, Image ,ImageBackground} from 'react-native';
-
+import { useFonts } from 'expo-font';
 // Sample notification data
 const notifications = [
   {
@@ -14,6 +14,20 @@ const notifications = [
 ];
 
 export default function NotificationsScreen({ navigation }) {
+  const [fontsLoaded] = useFonts({
+        'DMSerifDisplay': require('../assets/DMSerif-Display.ttf'),
+        'DMSerif': require('../assets/DMSerif.ttf'),
+        'DMSans': require('../assets/DMSans.ttf'),
+      });
+    
+      // Wait until font is loaded
+      if (!fontsLoaded) {
+        return (
+          <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+            <Text>Loading...</Text>
+          </View>
+        );
+      }
   return (
     <ImageBackground
                     source={require('../assets/gradientBg.png')}
@@ -87,6 +101,7 @@ const styles = StyleSheet.create({
   headerTitle: {
     fontSize: 24,
     fontWeight: '400',
+    fontFamily:"DMSerifDisplay",
     color: '#000',
   },
   closeButton: {
